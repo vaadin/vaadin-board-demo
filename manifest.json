@@ -1,0 +1,7 @@
+{
+  "name": "board-demo",
+  "short_name": "board-demo",
+  "description": "Demo app for vaadin-board element",
+  "start_url": "/",
+  "display": "standalone"
+}
