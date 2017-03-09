@@ -1,10 +1,10 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/my-app.html",
+  "shell": "src/board-demo-app.html",
   "fragments": [
-    "src/sales-dashboard-demo.html",
-    "src/row-types-demo.html",
-    "src/my-view404.html"
+    "src/sales-dashboard/sales-dashboard.html",
+    "src/row-types/row-types.html",
+    "src/404/404.html"
   ],
   "sources": [
     "src/**/*",

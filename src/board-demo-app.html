@@ -22,7 +22,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="my-icons.html">
 
-<dom-module id="my-app">
+<dom-module id="board-demo-app">
   <template>
     <style>
       :host {
@@ -103,8 +103,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
           <sales-dashboard-demo name="sales-dashboard"></sales-dashboard-demo>
-          <row-types-demo name="row-types">
-            </my-view2>
+          <row-types-demo name="row-types"></row-types-demo>
             <my-view404 name="view404"></my-view404>
         </iron-pages>
       </app-header-layout>
@@ -114,7 +113,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     class MyApp extends Polymer.Element {
 
-      static get is() { return 'my-app'; }
+      static get is() { return 'board-demo-app'; }
 
       static get properties() {
         return {
@@ -151,7 +150,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _pageChanged(page) {
         // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl(page + '-demo.html');
+        var resolvedPageUrl = this.resolveUrl(page + '/'+page+'.html');
         Polymer.importHref(
           resolvedPageUrl,
           null,
@@ -160,7 +159,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _showPage404() {
-        this.page = 'view404';
+        this.page = '404';
       }
     }
 

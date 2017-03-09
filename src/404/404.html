@@ -8,32 +8,33 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="shared-styles.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../shared-styles.html">
 
-<dom-module id="row-types-demo">
+<dom-module id="my-view404">
   <template>
     <style include="shared-styles">
       :host {
         display: block;
 
-        padding: 10px;
+        padding: 10px 20px;
       }
     </style>
 
+    <!--
+      If deploying in a folder replace href="/" with the full path to your site.
+      Such as: href=="http://polymerelements.github.io/polymer-starter-kit"
+    -->
     <div class="card">
-      <div class="circle">1</div>
-      <h1>Row Types Demo</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+          Oops you hit a 404. <a href="/">Head back to home.</a>
     </div>
   </template>
 
   <script>
-    class RowTypesDemo extends Polymer.Element {
-      static get is() { return 'row-types-demo'; }
+    class MyView404 extends Polymer.Element {
+      static get is() { return 'my-view404'; }
     }
 
-    window.customElements.define(RowTypesDemo.is, RowTypesDemo);
+    window.customElements.define(MyView404.is, MyView404);
   </script>
 </dom-module>
