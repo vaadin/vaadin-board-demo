@@ -11,29 +11,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../shared-styles.html">
 <link rel="import" href="demo-element.html">
+<link rel="import" href="../common/right-part-area.html">
 <link rel="import" href="../../bower_components/vaadin-board/vaadin-board.html">
 
 <dom-module id="row-types-demo">
   <template>
     <style include="shared-styles">
-      :host {
-        display: block;
-
-        padding: 10px;
-      }
-      vaadin-board-row:nth-child(even) {
-        background-color: #b5b5b5;
-      }
-      vaadin-board-row:nth-child(odd) {
-        background-color: #cdcdcd;
-      }
 
     </style>
-
-    <div class="card">
-      <h1>Row types</h1>
-    </div>
-    <div class="card">
+    <style>
+      :host {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <right-part-area header="Row types" java-source="[[javaSource]]">
       <vaadin-board>
         <vaadin-board-row>
           <demo-element item-number="1" item-size="1/4"></demo-element>
@@ -49,12 +41,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <vaadin-board-row>
           <demo-element item-number="1" item-size="1/4"></demo-element>
           <demo-element item-number="2" item-size="1/4"></demo-element>
-          <demo-element board-cols="2"  item-number="3" item-size="2/4"></demo-element>
+          <demo-element board-cols="2" item-number="3" item-size="2/4"></demo-element>
         </vaadin-board-row>
         <vaadin-board-row>
           <demo-element item-number="1" item-size="1/4"></demo-element>
-          <demo-element board-cols="2"  item-number="2" item-size="2/4"></demo-element>
-          <demo-element  item-number="3" item-size="1/4"></demo-element>
+          <demo-element board-cols="2" item-number="2" item-size="2/4"></demo-element>
+          <demo-element item-number="3" item-size="1/4"></demo-element>
         </vaadin-board-row>
         <vaadin-board-row>
           <demo-element item-number="1" item-size="2/4"></demo-element>
@@ -77,20 +69,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <demo-element item-number="3" item-size="1/3"></demo-element>
         </vaadin-board-row>
         <vaadin-board-row>
-          <demo-element board-cols="2"  item-number="1" item-size="2/3"></demo-element>
+          <demo-element board-cols="2" item-number="1" item-size="2/3"></demo-element>
           <demo-element item-number="2" item-size="1/3"></demo-element>
         </vaadin-board-row>
         <vaadin-board-row>
           <demo-element item-number="1" item-size="1/3"></demo-element>
-          <demo-element board-cols="2"  item-number="2" item-size="2/3"></demo-element>
+          <demo-element board-cols="2" item-number="2" item-size="2/3"></demo-element>
         </vaadin-board-row>
       </vaadin-board>
-    </div>
+    </right-part-area>
   </template>
 
   <script>
     class RowTypesDemo extends Polymer.Element {
       static get is() { return 'row-types-demo'; }
+      static get properties() {
+        return {
+          javaSource: {
+            value: "No Java source",
+            type: String
+          }
+        }
+      }
     }
 
     window.customElements.define(RowTypesDemo.is, RowTypesDemo);
