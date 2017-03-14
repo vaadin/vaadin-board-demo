@@ -17,67 +17,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="row-types-demo">
   <template>
     <style include="shared-styles">
-
-    </style>
-    <style>
-      :host {
-        height: 100%;
-        width: 100%;
+       :host {
+        display: block;
+        padding: 10px;
       }
     </style>
-    <demo-plus-sources-area header="Row types" java-source="[[javaSource]]">
-      <vaadin-board>
-        <vaadin-board-row>
-          <demo-element item-number="1" item-size="1/4"></demo-element>
-          <demo-element item-number="2" item-size="1/4"></demo-element>
-          <demo-element item-number="3" item-size="1/4"></demo-element>
-          <demo-element item-number="4" item-size="1/4"></demo-element>
-        </vaadin-board-row>
-        <vaadin-board-row>
-          <demo-element board-cols="2" item-number="1" item-size="2/4"></demo-element>
-          <demo-element item-number="2" item-size="1/4"></demo-element>
-          <demo-element item-number="3" item-size="1/4"></demo-element>
-        </vaadin-board-row>
-        <vaadin-board-row>
-          <demo-element item-number="1" item-size="1/4"></demo-element>
-          <demo-element item-number="2" item-size="1/4"></demo-element>
-          <demo-element board-cols="2" item-number="3" item-size="2/4"></demo-element>
-        </vaadin-board-row>
-        <vaadin-board-row>
-          <demo-element item-number="1" item-size="1/4"></demo-element>
-          <demo-element board-cols="2" item-number="2" item-size="2/4"></demo-element>
-          <demo-element item-number="3" item-size="1/4"></demo-element>
-        </vaadin-board-row>
-        <vaadin-board-row>
-          <demo-element item-number="1" item-size="2/4"></demo-element>
-          <demo-element item-number="2" item-size="2/4"></demo-element>
-        </vaadin-board-row>
-        <vaadin-board-row>
-          <demo-element board-cols="3" item-number="1" item-size="3/4"></demo-element>
-          <demo-element item-number="2" item-size="1/4"></demo-element>
-        </vaadin-board-row>
-        <vaadin-board-row>
-          <demo-element item-number="1" item-size="1/4"></demo-element>
-          <demo-element board-cols="3" item-number="2" item-size="3/4"></demo-element>
-        </vaadin-board-row>
-        <vaadin-board-row>
-          <demo-element item-number="1" item-size="4/4"></demo-element>
-        </vaadin-board-row>
-        <vaadin-board-row>
-          <demo-element item-number="1" item-size="1/3"></demo-element>
-          <demo-element item-number="2" item-size="1/3"></demo-element>
-          <demo-element item-number="3" item-size="1/3"></demo-element>
-        </vaadin-board-row>
-        <vaadin-board-row>
-          <demo-element board-cols="2" item-number="1" item-size="2/3"></demo-element>
-          <demo-element item-number="2" item-size="1/3"></demo-element>
-        </vaadin-board-row>
-        <vaadin-board-row>
-          <demo-element item-number="1" item-size="1/3"></demo-element>
-          <demo-element board-cols="2" item-number="2" item-size="2/3"></demo-element>
-        </vaadin-board-row>
-      </vaadin-board>
-    </demo-plus-sources-area>
+    <div class="card">
+      <demo-plus-sources-area header="Row types" java-source="[[javaSource]]">
+        <vaadin-board>
+          <vaadin-board-row>
+            <demo-element item-number="1" item-size="1/4"></demo-element>
+            <demo-element item-number="2" item-size="1/4"></demo-element>
+            <demo-element item-number="3" item-size="1/4"></demo-element>
+            <demo-element item-number="4" item-size="1/4"></demo-element>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <demo-element board-cols="2" item-number="1" item-size="2/4"></demo-element>
+            <demo-element item-number="2" item-size="1/4"></demo-element>
+            <demo-element item-number="3" item-size="1/4"></demo-element>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <demo-element item-number="1" item-size="1/4"></demo-element>
+            <demo-element item-number="2" item-size="1/4"></demo-element>
+            <demo-element board-cols="2" item-number="3" item-size="2/4"></demo-element>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <demo-element item-number="1" item-size="1/4"></demo-element>
+            <demo-element board-cols="2" item-number="2" item-size="2/4"></demo-element>
+            <demo-element item-number="3" item-size="1/4"></demo-element>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <demo-element item-number="1" item-size="2/4"></demo-element>
+            <demo-element item-number="2" item-size="2/4"></demo-element>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <demo-element board-cols="3" item-number="1" item-size="3/4"></demo-element>
+            <demo-element item-number="2" item-size="1/4"></demo-element>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <demo-element item-number="1" item-size="1/4"></demo-element>
+            <demo-element board-cols="3" item-number="2" item-size="3/4"></demo-element>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <demo-element item-number="1" item-size="4/4"></demo-element>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <demo-element item-number="1" item-size="1/3"></demo-element>
+            <demo-element item-number="2" item-size="1/3"></demo-element>
+            <demo-element item-number="3" item-size="1/3"></demo-element>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <demo-element board-cols="2" item-number="1" item-size="2/3"></demo-element>
+            <demo-element item-number="2" item-size="1/3"></demo-element>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <demo-element item-number="1" item-size="1/3"></demo-element>
+            <demo-element board-cols="2" item-number="2" item-size="2/3"></demo-element>
+          </vaadin-board-row>
+        </vaadin-board>
+      </demo-plus-sources-area>
+    </div>
   </template>
 
   <script>
