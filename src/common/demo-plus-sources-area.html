@@ -51,13 +51,18 @@
         margin-bottom: -2px;
         height: 25px;
       }
+      
+      #javabutton {
+        display:none;
+      }
     </style>
     <div id="container">
-      You can implement this either HTML or Java
+      <!--You can implement this either HTML or Java-->
+
       <div class="nav-panel">
         <div class="nav-panel__tabs">
           <paper-button id="htmlbutton" class="nav-panel__tabs__button" on-click="showSource" noink toggles
-                        source-type="html">HTML
+                        source-type="html">see source
           </paper-button>
           <paper-button id="javabutton" class="nav-panel__tabs__button" on-click="showSource" noink toggles
                         source-type="java">Java
