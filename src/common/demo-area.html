@@ -1,0 +1,87 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/vaadin-icons/vaadin-icons.html">
+
+<dom-module id="demo-area">
+  <template>
+    <style>
+      paper-icon-button[active] {
+        background-color: rgb(202, 202, 202);
+      }
+    </style>
+    <h2>[[header]]</h2>
+    <div id="buttons">
+      <paper-icon-button noink id="full" icon="vaadin-icons:expand-full"></paper-icon-button>
+      <paper-icon-button noink id="mobile" icon="vaadin-icons:mobile"></paper-icon-button>
+      <paper-icon-button noink id="tablet" icon="vaadin-icons:tablet"></paper-icon-button>
+      <paper-icon-button noink id="desktop" icon="vaadin-icons:desktop"></paper-icon-button>
+    </div>
+    <slot id="content"></slot>
+  </template>
+
+  <script>
+    class DemoArea extends Polymer.Element{
+      static get is() {
+        return 'demo-area';
+      }
+      static get properties() {
+        return {
+            buttons: {
+              value: [],
+              type: Object
+            },
+            modes: {
+              value:{
+                "full":"100%",
+                "mobile":"500px",
+                "tablet":"720px",
+                "desktop":"1200px"
+              },
+              type: Object
+            },
+            header: {
+              value:"",
+              type:String
+            }
+        }
+      }
+      constructor() {
+        super();
+      }
+
+      _sizeChange(mode) {
+        for(let key in this.buttons) {
+          if(mode === key ) {
+            this.buttons[key].setAttribute("active",'')
+          } else {
+            this.buttons[key].removeAttribute("active")
+          }
+          let content = this.$.content.assignedNodes().filter(node => node.nodeType !== node.TEXT_NODE)[0];
+          content.style.width = this.modes[mode];
+          if(content.redraw) {
+            content.redraw();
+          }
+        }
+      }
+      
+      ready() {
+        super.ready();
+        this.$.buttons.querySelectorAll("paper-icon-button").forEach((button) => {
+          let id = button.getAttribute("id");
+          button.addEventListener("click", function() {
+            this._sizeChange(id);
+          }.bind(this));
+
+          this.buttons[id] = button;
+        });
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+      }
+
+    }
+    customElements.define(DemoArea.is, DemoArea);
+  </script>
+</dom-module>

@@ -1,0 +1,165 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/vaadin-icons/vaadin-icons.html">
+<link rel="import" href="../../bower_components/vaadin-split-layout/vaadin-split-layout.html">
+
+<link rel="import" href="demo-area.html">
+<link rel="import" href="demo-snippet.html">
+
+<dom-module id="demo-plus-sources-area">
+  <template>
+    <custom-style>
+      <style>
+        #layout.hiddensplitter {
+          --vaadin-split-layout-splitter: {
+            display: none;
+          }
+        }
+      </style>
+    </custom-style>
+    <style>
+      :host {
+        display: block;
+        background-color: white;
+      }
+
+      .nav-panel {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .nav-panel__tabs {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .nav-panel__tabs__button {
+        border-radius: 0;
+        box-sizing: border-box;
+        padding-bottom: 5px;
+        padding-left: 0;
+        height: 25px;
+        text-align: start;
+        border-bottom: 2px solid rgb(255, 255, 255);
+        margin-bottom: -2px;
+      }
+
+      .nav-panel__tabs__button[active] {
+        box-sizing: border-box;
+        border-bottom: 2px solid rgb(66, 140, 238);
+        margin-bottom: -2px;
+        height: 25px;
+      }
+    </style>
+    <div id="container">
+      You can implement this either HTML or Java
+      <div class="nav-panel">
+        <div class="nav-panel__tabs">
+          <paper-button id="htmlbutton" class="nav-panel__tabs__button" on-click="showSource" noink toggles
+                        source-type="html">HTML
+          </paper-button>
+          <paper-button id="javabutton" class="nav-panel__tabs__button" on-click="showSource" noink toggles
+                        source-type="java">Java
+          </paper-button>
+        </div>
+        <paper-icon-button style="display:none; align-self: flex-end;" id="closebutton" on-click="_close" noink
+                           icon="vaadin-icons:close-circle-o"></paper-icon-button>
+      </div>
+      <vaadin-split-layout class="hiddensplitter" style="height:100%; right: 0px;" id="layout" vertical>
+        <demo-area id="example" header="[[header]]">
+        </demo-area>
+      </vaadin-split-layout>
+    </div>
+  </template>
+
+  <script>
+
+    class DemoPlusSourcesArea extends Polymer.Element {
+      static get is() {
+        return 'demo-plus-sources-area';
+      }
+
+      static get properties() {
+        return {
+          sourceLayout: {
+            value: undefined,
+            type: Object
+          },
+          sourceType: {
+            value: "html",
+            type: String
+          },
+          header: {
+            value: "",
+            type: String
+          },
+          htmlSource: {
+            value: "No HTML source",
+            type: String
+          },
+          javaSource: {
+            value: "No Java source",
+            type: String
+          }
+        }
+      }
+
+      constructor() {
+        super();
+      }
+
+      ready() {
+        super.ready();
+        this.$.example.innerHTML = this.innerHTML;
+        this.htmlSource = this.innerHTML;
+      }
+
+      _close() {
+        if (this.sourceLayout) {
+          this.$.layout.removeChild(this.sourceLayout);
+          this.sourceLayout = undefined;
+        }
+        this.$.closebutton.style.display = "none";
+        this.$.layout.classList.add("hiddensplitter");
+        this.$.layout.updateStyles();
+      }
+
+      _createSourceElement() {
+        this.sourceLayout = document.createElement("demo-snippet");
+        this.sourceLayout.style.height = "250px";
+      }
+
+      _clearButtonsActive() {
+        this.$.htmlbutton.removeAttribute("active");
+        this.$.javabutton.removeAttribute("active");
+      }
+
+      showSource(e) {
+        this.$.layout.classList.remove("hiddensplitter");
+        this.$.layout.updateStyles();
+        this._clearButtonsActive();
+        this.$.closebutton.style.display = "";
+        if (this.sourceLayout) {
+          this.$.layout.removeChild(this.sourceLayout);
+        }
+        this._createSourceElement()
+        const sourceType = e.target.getAttribute("source-type");
+        if (sourceType === "html") {
+          this.sourceLayout.setAttribute("source", this.htmlSource);
+        } else {
+          this.sourceLayout.setAttribute("source", this.javaSource);
+        }
+        var exampleArea = this.$.layout.querySelector("demo-area");
+        this.$.layout.insertBefore(this.sourceLayout, exampleArea);
+        this.$.layout.updateStyles();
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+      }
+
+    }
+    customElements.define(DemoPlusSourcesArea.is, DemoPlusSourcesArea);
+  </script>
+</dom-module>
