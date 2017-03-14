@@ -27,12 +27,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style>
       :host {
         --app-primary-color: #00B4F0;
-        --app-secondary-color: #33383A;
+        --app-secondary-color: #e5e8e8;
 
         display: block;
 
         --app-drawer-content-container: {
-          background-color: #FAFAFA;
+          background-color: #33383A;
         };
       }
 
@@ -62,22 +62,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .drawer-list a.iron-selected {
-        color: black;
-        font-weight: bold;
+        background: var(--app-primary-color);
       }
 
       .logo {
+        margin-top: 20px;
         font-weight: 400;
         font-size: 1.2em;
         letter-spacing: 0;
         text-align: center;
-        background: transparent url("../images/board-logo.svg") no-repeat 50% 10px;
+        background: transparent url("../images/board-icon-darkbg.svg") no-repeat 50% 10px;
         background-size: 110px 110px;
-        padding-top: 120px;
+        padding-top: 140px;
+        color:var(--app-secondary-color);
       }
     </style>
 
-    <app-location route="{{route}}"></app-location>
+    <app-location route="{{route}}"  use-hash-as-path></app-location>
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <app-drawer-layout fullbleed>
@@ -86,8 +87,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="logo">Vaadin Board</div>
 
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="sales-dashboard" href="/sales-dashboard">Sales Dashboard</a>
-          <a name="row-types" href="/row-types">Row Types</a>
+          <!--<a name="sales-dashboard" href="#/sales-dashboard">Sales Dashboard</a>-->
+          <a name="row-types" href="#/row-types">Row Types</a>
         </iron-selector>
       </app-drawer>
 
@@ -121,6 +122,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: String,
             reflectToAttribute: true,
             observer: '_pageChanged',
+            value: 'row-types'
           },
         };
       }
@@ -140,7 +142,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         // If no page was found in the route data, page will be an empty string.
         // Deault to 'view1' in that case.
-        this.page = page || 'sales-dashboard';
+        this.page = page || 'row-types';
 
         // Close a non-persistent drawer when the page & route are changed.
         if (!this.$.drawer.persistent) {
