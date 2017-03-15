@@ -1,0 +1,63 @@
+<link rel="import" href="../../bower_components/vaadin-charts/vaadin-line-chart.html">
+<dom-module id="top-chart">
+    <template>
+        <style>
+            :host {
+                overflow: hidden;
+            }
+            #main {
+                height:300px;
+                display:flex;
+                flex-direction:column;
+                overflow: hidden;
+            }
+        </style>
+        <div id="main">
+            <div style="font-size:33px; text-align: center; flex-grow:0;">
+                $[[overallValue]]
+            </div>
+            <vaadin-line-chart style="flex-grow:1">
+                <exporting enabled="false">
+                </exporting>
+                <chart-title>[[caption]]</chart-title>
+                <x-axis line-width=0 minor-grid-line-width=0>
+                    <labels enabled="false"></labels>
+                </x-axis>
+                <y-axis line-width=0 minor-grid-line-width=0 grid-line-width=0 >
+                    <labels enabled="false"></labels>
+                    <chart-title text=""></chart-title>
+                </y-axis>
+                <legend enabled="false">
+
+                </legend>
+                <data-series name="Short">
+                    <data>[[values]]</data>
+                    <marker enabled="false"></marker>
+                </data-series>
+            </vaadin-line-chart>
+        </div>
+    </template>
+
+    <script>
+        class TopChart extends Polymer.Element {
+            static get is() {
+                return "top-chart";
+            }
+            static get properties() {
+                return {
+                    values:{
+                        type:Array,
+                        value: [3,32,532]
+                    },
+                    caption :{
+                        type:String
+                    },
+                    overallValue:{
+                        type:Number
+                    }
+                }
+            }
+        }
+        customElements.define(TopChart.is, TopChart);
+    </script>
+</dom-module>

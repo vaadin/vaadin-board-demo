@@ -1,0 +1,52 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="demo-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+        border-style: solid;
+        border-width: 3px;
+        border-color: #fff;
+        text-align: center;
+        background-color: #cacaca;
+      }
+
+      .number {
+        font-size: 1.2em;
+        margin-top: 0.67em;
+      }
+
+      .size {
+        font-size: 1em;
+        margin-bottom: 1.83em;
+      }
+    </style>
+    <div class="number">[[itemNumber]]</div>
+    <div class="size">[[itemSize]]</div>
+  </template>
+
+  <script>
+    class DemoElement extends Polymer.Element {
+      static get is() {
+        return 'demo-element';
+      }
+
+      static get properties() {
+        return {
+          itemNumber: {
+            type: String
+          },
+          itemSize: {
+            type: String
+          }
+        }
+      }
+
+    }
+    customElements.define(DemoElement.is, DemoElement);
+  </script>
+</dom-module>
