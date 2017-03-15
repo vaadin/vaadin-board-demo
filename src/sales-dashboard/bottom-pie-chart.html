@@ -1,0 +1,34 @@
+<link rel="import" href="../../bower_components/vaadin-charts/vaadin-pie-chart.html">
+<dom-module id="bottom-pie-chart">
+    <template>
+        <style>
+
+            #main {
+                height:200px;
+            }
+        </style>
+            <vaadin-pie-chart id="main">
+                <exporting enabled="false">
+                </exporting>
+                <chart-title>[[caption]]</chart-title>
+                </tooltip>
+                <data-series name="Browser share">
+                    <data>
+                        ["Marketing",       33.0],
+                        ["Consulting", 12.8],
+                        ["Sales",    20.5],
+                        ["R&D",   33.0]
+                    </data>
+                </data-series>
+            </vaadin-pie-chart>
+    </template>
+
+    <script>
+        class BottomPieChart extends Polymer.Element {
+            static get is() {
+                return "bottom-pie-chart";
+            }
+        }
+        customElements.define(BottomPieChart.is, BottomPieChart);
+    </script>
+</dom-module>
