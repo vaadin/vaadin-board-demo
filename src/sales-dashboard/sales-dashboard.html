@@ -10,28 +10,67 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../shared-styles.html">
+<link rel="import" href="../common/demo-plus-sources-area.html">
+<link rel="import" href="../../bower_components/vaadin-board/vaadin-board.html">
+
+<link rel="import" href="mid-column-chart.html">
+<link rel="import" href="mid-line-chart.html">
+<link rel="import" href="top-chart.html">
+<link rel="import" href="bottom-pie-chart.html">
+<link rel="import" href="bottom-funnel-chart.html">
 
 <dom-module id="sales-dashboard-demo">
   <template>
     <style include="shared-styles">
-      :host {
-        display: block;
-
-        padding: 10px;
-      }
     </style>
 
     <div class="card">
-      <div class="circle">1</div>
-      <h1>Sales Dashboard Demo</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+      <demo-plus-sources-area header="Row types" java-source="[[javaSource]]">
+        <vaadin-board>
+          <vaadin-board-row id="firstrow" style="flex:1 1 20%">
+            <top-chart caption="Billed" overall-value="6350"
+                       values="[29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 29.9]"></top-chart>
+            <top-chart caption="Outstanding" overall-value="273"
+                       values="[12.9, 13.5, 16.4, 19.2, 14.0, 17.0, 15.6, 13.5, 16.4, 19.1, 15.6, 19.9]"></top-chart>
+            <top-chart caption="Refunded" overall-value="170"
+                       values="[3.9, 6.5, 16.4, 19.2, 14.0, 17.0, 15.6, 18.5, 22.4, 14.1, 15.6, 19.9]"></top-chart>
+            <top-chart caption="Total Revenue" overall-value="6623"
+                       values="[29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 29.9]"></top-chart>
+          </vaadin-board-row>
+          <vaadin-board-row style="min-height:300px; flex:2 1 40%;">
+            <mid-column-chart board-cols="3" style="position:parent; top:10px;">
+            </mid-column-chart>
+            <vaadin-board-row board-cols="1">
+              <mid-line-chart caption="Avg price" overall-value="25"
+                              values="[29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]"></mid-line-chart>
+              <mid-line-chart caption="Customers" overall-value="265"
+                              values="[29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]"></mid-line-chart>
+              <mid-line-chart caption="Churn" overall-value="15"
+                              values="[29.9, 22.5, 17.4, 25.2, 24.0, 22.0, 18.6, 26.5, 19.4, 18.1, 17.6, 16.4]"></mid-line-chart>
+            </vaadin-board-row>
+          </vaadin-board-row>
+          <vaadin-board-row style="min-height:300px; flex:1 1 30%;">
+            <bottom-pie-chart caption="Products" style="min-height:50px;">
+            </bottom-pie-chart>
+            <bottom-funnel-chart caption="Funnel" style="min-height: 50px">
+            </bottom-funnel-chart>
+          </vaadin-board-row>
+        </vaadin-board>
+      </demo-plus-sources-area>
     </div>
   </template>
 
   <script>
     class SalesDashboardDemo extends Polymer.Element {
       static get is() { return 'sales-dashboard-demo'; }
+      static get properties() {
+        return {
+          javaSource: {
+            value: "No Java source",
+            type: String
+          }
+        }
+      }
     }
 
     window.customElements.define(SalesDashboardDemo.is, SalesDashboardDemo);
