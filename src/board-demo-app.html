@@ -25,34 +25,40 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="board-demo-app">
   <template>
     <style>
-      :host {
+       :host {
         --app-primary-color: #00B4F0;
         --app-secondary-color: #e5e8e8;
-
+        --app-secondary-text-color: rgba(255, 255, 255, 0.4);
         display: block;
-
+        --app-drawer-width: 256px;
         --app-drawer-content-container: {
           background-color: #33383A;
-        };
+        }
+
       }
 
       app-drawer-layout:not([narrow]) [drawer-toggle] {
         display: none;
       }
 
+      app-drawer-layout[narrow] {
+        --app-drawer-width: 100%;
+      }
+              
+
       app-header {
         color: #fff;
         background-color: var(--app-primary-color);
       }
-
+      
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
       }
-
+      
       .drawer-list {
         margin: 0 20px;
       }
-
+      
       .drawer-list a {
         display: block;
         padding: 0 16px;
@@ -60,11 +66,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: var(--app-secondary-color);
         line-height: 40px;
       }
-
+      
       .drawer-list a.iron-selected {
         background: var(--app-primary-color);
       }
-
+      
       .logo {
         margin-top: 20px;
         font-weight: 400;
@@ -74,7 +80,40 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background: transparent url("../images/board-icon-darkbg.svg") no-repeat 50% 10px;
         background-size: 110px 110px;
         padding-top: 140px;
-        color:var(--app-secondary-color);
+        color: var(--app-secondary-color);
+      }
+      
+      .version {
+        font-size: 12px;
+        line-height: 20px;
+        color: var(--app-secondary-text-color);
+        text-align: center;
+        margin: 10px 0;
+      }
+      
+      app-drawer-layout[narrow] .drawer-header {
+        display: none;
+      }
+            
+      .drawer-footer {
+        width: var(--app-drawer-width);
+        position:fixed;
+        bottom: 140px;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .links > a {
+        color: var(--app-primary-color);
+        text-decoration: inherit;
+      }
+
+      .links > a:hover { 
+        color: var(--app-secondary-color);
       }
     </style>
 
@@ -84,12 +123,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-drawer-layout fullbleed>
       <!-- Drawer content -->
       <app-drawer id="drawer" slot="drawer">
-        <div class="logo">Vaadin Board</div>
-
+        <div class="drawer-header">
+          <div class="logo">Vaadin Board</div>
+          <div class="version">Version 1.0.0</div>
+        </div>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="sales-dashboard" href="#/sales-dashboard">Sales Dashboard</a>
           <a name="row-types" href="#/row-types">Row Types</a>
         </iron-selector>
+        <div class="drawer-footer">
+          <div class="links">
+            <a href="https://vaadin.com/board"><span>Home page</span></a>
+            <a href="http://demo.vaadin.com/javadoc/com.vaadin/vaadin-board/1.1.0/"><span>JAVADOC</span></a>
+            <a href="https://vaadin.com/docs/-/part/board/webcomponents-api/board-getting-started.html"><span>Manual</span></a>
+          </div>
+        </div>
       </app-drawer>
 
       <!-- Main content -->
@@ -105,7 +153,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
           <sales-dashboard-demo name="sales-dashboard"></sales-dashboard-demo>
           <row-types-demo name="row-types"></row-types-demo>
-            <my-view404 name="view404"></my-view404>
+          <my-view404 name="view404"></my-view404>
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
@@ -122,7 +170,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: String,
             reflectToAttribute: true,
             observer: '_pageChanged',
-	    value: 'sales-dashboard'
+            value: 'sales-dashboard'
           },
         };
       }
