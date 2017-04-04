@@ -7,13 +7,18 @@
         margin-left: 0;
         margin-right: 0;
         font-weight: bold;
-        border-style: solid;
-        border-width: 3px;
-        border-color: #fff;
+
         text-align: center;
         background-color: #cacaca;
       }
-
+      /*This extra div is needed because of IE11 bug
+       https://github.com/philipwalton/flexbugs/issues/3
+      */
+      .border {
+        border-style: solid;
+        border-width: 3px;
+        border-color: #fff;
+      }
       .number {
         font-size: 1.2em;
         margin-top: 0.67em;
@@ -24,8 +29,10 @@
         margin-bottom: 1.83em;
       }
     </style>
-    <div class="number">[[itemNumber]]</div>
-    <div class="size">[[itemSize]]</div>
+    <div class="border">
+      <div class="number">[[itemNumber]]</div>
+      <div class="size">[[itemSize]]</div>
+    </div>
   </template>
 
   <script>
