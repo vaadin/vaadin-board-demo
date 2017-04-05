@@ -1,66 +1,67 @@
 <link rel="import" href="../../bower_components/vaadin-charts/vaadin-line-chart.html">
 <dom-module id="mid-line-chart">
-    <template>
-        <style>
-            #main {
-                height: 200px;
-                display: flex;
-                flex-direction: row;
-            }
-            .summary {
-                font-size: 33px;
-                align-self: center;
-                text-align: center;
-                flex-grow: 0;
-                padding-right: 20px;
-            }
-        </style>
-        <div id="main">
-            <vaadin-line-chart style="flex-grow:1">
-                <exporting enabled="false">
-                </exporting>
-                <chart-title>[[caption]]</chart-title>
-                <x-axis line-width=0 minor-grid-line-width=0>
-                    <labels enabled="false"></labels>
-                </x-axis>
-                <y-axis line-width=0 minor-grid-line-width=0 grid-line-width=0 >
-                    <labels enabled="false"></labels>
-                    <chart-title text=""></chart-title>
-                </y-axis>
-                <legend enabled="false">
+  <template>
+    <style>
+      #main {
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+      }
+      
+      .summary {
+        font-size: 33px;
+        align-self: center;
+        text-align: center;
+        flex-grow: 0;
+        padding-right: 20px;
+      }
+    </style>
+    <div id="main">
+      <vaadin-line-chart style="flex-grow:1">
+        <exporting enabled="false">
+        </exporting>
+        <chart-title>[[caption]]</chart-title>
+        <x-axis line-width=0 minor-grid-line-width=0>
+          <labels enabled="false"></labels>
+        </x-axis>
+        <y-axis line-width=0 minor-grid-line-width=0 grid-line-width=0>
+          <labels enabled="false"></labels>
+          <chart-title text=""></chart-title>
+        </y-axis>
+        <legend enabled="false">
 
-                </legend>
-                <data-series name="Short">
-                    <data>[[values]]</data>
-                    <marker enabled="false"></marker>
-                </data-series>
-            </vaadin-line-chart>
-            <div class="summary">
-                $[[overallValue]]
-            </div>
-        </div>
-    </template>
+        </legend>
+        <data-series name="Short">
+          <data>[[values]]</data>
+          <marker enabled="false"></marker>
+        </data-series>
+      </vaadin-line-chart>
+      <div class="summary">
+        $[[overallValue]]
+      </div>
+    </div>
+  </template>
 
-    <script>
-        class MidLineChart extends Polymer.Element {
-            static get is() {
-                return "mid-line-chart";
-            }
-            static get properties() {
-                return {
-                    values:{
-                        type:Array,
-                        value: [3,32,532]
-                    },
-                    caption :{
-                        type:String
-                    },
-                    overallValue:{
-                        type:Number
-                    }
-                }
-            }
+  <script>
+    class MidLineChart extends Polymer.Element {
+      static get is() {
+        return "mid-line-chart";
+      }
+      static get properties() {
+        return {
+          values: {
+            type: Array,
+            value: [3, 32, 532]
+          },
+          caption: {
+            type: String
+          },
+          overallValue: {
+            type: Number
+          }
         }
-        customElements.define(MidLineChart.is, MidLineChart);
-    </script>
+      }
+    }
+    customElements.define(MidLineChart.is, MidLineChart);
+  </script>
 </dom-module>
