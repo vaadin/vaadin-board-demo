@@ -1,7 +1,12 @@
 <link rel="import" href="../../bower_components/vaadin-charts/vaadin-column-chart.html">
 <dom-module id="mid-column-chart">
   <template>
-    <vaadin-column-chart id="stacked-column">
+    <style>
+       :host {
+        display: flex;
+      }
+    </style>
+    <vaadin-column-chart id="stacked-column" style="flex:1 1 0%;">
       <exporting enabled="false">
       </exporting>
       <chart-title>Stacked bar chart</chart-title>
