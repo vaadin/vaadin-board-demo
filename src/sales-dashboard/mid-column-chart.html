@@ -1,40 +1,45 @@
 <link rel="import" href="../../bower_components/vaadin-charts/vaadin-column-chart.html">
 <dom-module id="mid-column-chart">
-    <template>
-            <vaadin-column-chart id="stacked-column">
-                <exporting enabled="false">
-                </exporting>
-                <chart-title>Stacked bar chart</chart-title>
-                <x-axis>
-                    <categories>Apples, Oranges, Pears, Grapes, Bananas</categories>
-                </x-axis>
-                <y-axis min="0">
-                    <chart-title>Total fruit consumption</chart-title>
-                </y-axis>
-                <legend reversed="true"></legend>
-                <tooltip point-format="{series.name}: {point.y}. Total: {point.stackTotal}"></tooltip>
-                <plot-options>
-                    <series stacking="normal">
-                    </series>
-                </plot-options>
-                <data-series name="John">
-                    <data>5, 3, 4, 7, 2</data>
-                </data-series>
-                <data-series name="Jane">
-                    <data>2, 2, 3, 2, 1</data>
-                </data-series>
-                <data-series name="Joe">
-                    <data>3, 4, 4, 2, 5</data>
-                </data-series>
-            </vaadin-column-chart>
-    </template>
+  <template>
+    <style>
+       :host {
+        display: flex;
+      }
+    </style>
+    <vaadin-column-chart id="stacked-column" style="flex:1 1 0%;">
+      <exporting enabled="false">
+      </exporting>
+      <chart-title>Stacked bar chart</chart-title>
+      <x-axis>
+        <categories>Apples, Oranges, Pears, Grapes, Bananas</categories>
+      </x-axis>
+      <y-axis min="0">
+        <chart-title>Total fruit consumption</chart-title>
+      </y-axis>
+      <legend reversed="true"></legend>
+      <tooltip point-format="{series.name}: {point.y}. Total: {point.stackTotal}"></tooltip>
+      <plot-options>
+        <series stacking="normal">
+        </series>
+      </plot-options>
+      <data-series name="John">
+        <data>5, 3, 4, 7, 2</data>
+      </data-series>
+      <data-series name="Jane">
+        <data>2, 2, 3, 2, 1</data>
+      </data-series>
+      <data-series name="Joe">
+        <data>3, 4, 4, 2, 5</data>
+      </data-series>
+    </vaadin-column-chart>
+  </template>
 
-    <script>
-        class MidColumnChart extends Polymer.Element {
-            static get is() {
-                return "mid-column-chart";
-            }
-        }
-        customElements.define(MidColumnChart.is, MidColumnChart);
-    </script>
+  <script>
+    class MidColumnChart extends Polymer.Element {
+      static get is() {
+        return "mid-column-chart";
+      }
+    }
+    customElements.define(MidColumnChart.is, MidColumnChart);
+  </script>
 </dom-module>
