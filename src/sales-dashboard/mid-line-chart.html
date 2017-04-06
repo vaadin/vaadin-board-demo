@@ -19,7 +19,8 @@
             <vaadin-line-chart style="flex-grow:1">
                 <exporting enabled="false">
                 </exporting>
-                <chart-title>[[caption]]</chart-title>
+                <chart-title margin="32" chart-style='{ "color": "#808080", "fontSize": "14px", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'>[[caption]]</chart-title>
+                <subtitle color="#0000ff" chart-style='{ "color": "#3090F0", "fontSize": "24px", "font": "400 24px \"Open Sans\", Verdana, sans-serif" }'>[[overallValue]]</subtitle>
                 <x-axis line-width=0 minor-grid-line-width=0>
                     <labels enabled="false"></labels>
                 </x-axis>
@@ -31,13 +32,11 @@
 
                 </legend>
                 <data-series name="Short">
+                    <color>[[chartColor]]</color>
                     <data>[[values]]</data>
                     <marker enabled="false"></marker>
                 </data-series>
             </vaadin-line-chart>
-            <div class="summary">
-                $[[overallValue]]
-            </div>
         </div>
     </template>
 
@@ -56,7 +55,10 @@
                         type:String
                     },
                     overallValue:{
-                        type:Number
+                        type:String
+                    },
+                    chartColor:{
+                        type:String
                     }
                 }
             }
