@@ -1,68 +1,65 @@
 <link rel="import" href="../../bower_components/vaadin-charts/vaadin-line-chart.html">
 <dom-module id="mid-line-chart">
-    <template>
-        <style>
-            #main {
-                height: 200px;
-                display: flex;
-                flex-direction: row;
-            }
-            .summary {
-                font-size: 33px;
-                align-self: center;
-                text-align: center;
-                flex-grow: 0;
-                padding-right: 20px;
-            }
-        </style>
-        <div id="main">
-            <vaadin-line-chart style="flex-grow:1">
-                <exporting enabled="false">
-                </exporting>
-                <chart-title margin="32" chart-style='{ "color": "#808080", "fontSize": "14px", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'>[[caption]]</chart-title>
-                <subtitle color="#0000ff" chart-style='{ "color": "#3090F0", "fontSize": "24px", "font": "400 24px \"Open Sans\", Verdana, sans-serif" }'>[[overallValue]]</subtitle>
-                <x-axis line-width=0 minor-grid-line-width=0>
-                    <labels enabled="false"></labels>
-                </x-axis>
-                <y-axis line-width=0 minor-grid-line-width=0 grid-line-width=0 >
-                    <labels enabled="false"></labels>
-                    <chart-title text=""></chart-title>
-                </y-axis>
-                <legend enabled="false">
+  <template>
+    <style>
+      #main {
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+      }
+      .summary {
+        font-size: 33px;
+        align-self: center;
+        text-align: center;
+        flex-grow: 0;
+        padding-right: 20px;
+      }
+    </style>
+    <div id="main">
+      <vaadin-line-chart style="flex-grow:1">
+        <exporting enabled="false"></exporting>
+        <chart-title margin="32" chart-style='{ "color": "#808080", "fontSize": "14px", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'>[[caption]]</chart-title>
+        <subtitle color="#0000ff" chart-style='{ "color": "#3090F0", "fontSize": "24px", "font": "400 24px \"Open Sans\", Verdana, sans-serif" }'>[[overallValue]]</subtitle>
+        <x-axis line-width=0 minor-grid-line-width=0>
+          <labels enabled="false"></labels>
+        </x-axis>
+        <y-axis line-width=0 minor-grid-line-width=0 grid-line-width=0 >
+          <labels enabled="false"></labels>
+          <chart-title text=""></chart-title>
+        </y-axis>
+        <legend enabled="false"></legend>
+        <data-series name="Short">
+          <color>[[chartColor]]</color>
+          <data>[[values]]</data>
+          <marker enabled="false"></marker>
+        </data-series>
+      </vaadin-line-chart>
+    </div>
+  </template>
 
-                </legend>
-                <data-series name="Short">
-                    <color>[[chartColor]]</color>
-                    <data>[[values]]</data>
-                    <marker enabled="false"></marker>
-                </data-series>
-            </vaadin-line-chart>
-        </div>
-    </template>
-
-    <script>
-        class MidLineChart extends Polymer.Element {
-            static get is() {
-                return "mid-line-chart";
-            }
-            static get properties() {
-                return {
-                    values:{
-                        type:Array,
-                        value: [3,32,532]
-                    },
-                    caption :{
-                        type:String
-                    },
-                    overallValue:{
-                        type:String
-                    },
-                    chartColor:{
-                        type:String
-                    }
-                }
-            }
+  <script>
+    class MidLineChart extends Polymer.Element {
+      static get is() {
+        return "mid-line-chart";
+      }
+      static get properties() {
+        return {
+          values: {
+            type: Array,
+            value: [3, 32, 532]
+          },
+          caption: {
+            type: String
+          },
+          overallValue: {
+            type: String
+          },
+          chartColor: {
+            type: String
+          }
         }
-        customElements.define(MidLineChart.is, MidLineChart);
-    </script>
+      }
+    }
+    customElements.define(MidLineChart.is, MidLineChart);
+  </script>
 </dom-module>

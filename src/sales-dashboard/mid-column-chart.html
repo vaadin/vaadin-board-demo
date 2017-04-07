@@ -1,41 +1,38 @@
 <link rel="import" href="../../bower_components/vaadin-charts/vaadin-column-chart.html">
 <dom-module id="mid-column-chart">
-    <template>
-            <vaadin-column-chart id="stacked-column">
-                <exporting enabled="false">
-                </exporting>
-                <chart-title>Q1 Product Sales</chart-title>
-                <x-axis>
-                    <categories>Apples, Oranges, Pears, Grapes, Bananas</categories>
-                </x-axis>
-                <y-axis tick-interval="500000" line-width=0 minor-grid-line-width=0 grid-z-index="4" grid-line-color="#DDDDDD">
-                    <labels align="left" x="0" y="-2" padding="0"></labels>
-                    <chart-title enabled="false"></chart-title>
-                </y-axis>
-                <legend reversed="true"></legend>
-                <tooltip point-format="{series.name}: {point.y}. Total: {point.stackTotal}"></tooltip>
-                <plot-options>
-                    <series stacking="normal">
-                    </series>
-                </plot-options>
-                <data-series name="John" color="#F9DD51">
-                    <data>510000, 300000, 520000, 840000, 610000</data>
-                </data-series>
-                <data-series name="Jane" color="#98DF58">
-                    <data>600000, 580000, 540000, 420000, 330000</data>
-                </data-series>
-                <data-series name="Joe" color="#3090F0">
-                    <data>980000, 540000, 430000, 650000, 610000</data>
-                </data-series>
-            </vaadin-column-chart>
-    </template>
+  <template>
+    <style>
+      :host {
+        display: flex;
+      }
+    </style>
+    <vaadin-column-chart id="stacked-column">
+      <exporting enabled="false"></exporting>
+      <chart-title>Q1 Product Sales</chart-title>
+      <x-axis>
+        <categories>Apples, Oranges, Pears, Grapes, Bananas</categories>
+      </x-axis>
+      <y-axis tick-interval="500000" line-width=0 minor-grid-line-width=0 grid-z-index="4" grid-line-color="#DDDDDD">
+        <labels align="left" x="0" y="-2" padding="0"></labels>
+        <chart-title enabled="false"></chart-title>
+      </y-axis>
+      <legend reversed="true"></legend>
+      <tooltip point-format="{series.name}: {point.y}. Total: {point.stackTotal}"></tooltip>
+      <plot-options>
+        <series stacking="normal"></series>
+      </plot-options>
+      <data-series name="John" color="#F9DD51"><data>510000, 300000, 520000, 840000, 610000</data></data-series>
+      <data-series name="Jane" color="#98DF58"><data>600000, 580000, 540000, 420000, 330000</data></data-series>
+      <data-series name="Joe" color="#3090F0"><data>980000, 540000, 430000, 650000, 610000</data></data-series>
+    </vaadin-column-chart>
+  </template>
 
-    <script>
-        class MidColumnChart extends Polymer.Element {
-            static get is() {
-                return "mid-column-chart";
-            }
-        }
-        customElements.define(MidColumnChart.is, MidColumnChart);
-    </script>
+  <script>
+    class MidColumnChart extends Polymer.Element {
+      static get is() {
+        return "mid-column-chart";
+      }
+    }
+    customElements.define(MidColumnChart.is, MidColumnChart);
+  </script>
 </dom-module>

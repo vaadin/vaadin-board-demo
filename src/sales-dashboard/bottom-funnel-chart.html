@@ -1,44 +1,42 @@
 <link rel="import" href="../../bower_components/vaadin-charts/vaadin-funnel-chart.html">
 <dom-module id="bottom-funnel-chart">
-    <template>
-        <style>
-        </style>
-        <vaadin-funnel-chart id="main">
-            <exporting enabled="false">
-            </exporting>
-            <chart-title margin="32" chart-style='{ "color": "#808080", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'>Sales &amp; Marketing pipeline</chart-title>
-            <plot-options>
-                <funnel>
-                  <colors>["#3090F0", "#98DF58", "#F9DD51", "#24DCD4", "#EC64A5", "#685CB0"]</colors>
-                </funnel>
-                <series neck-width="5%" neck-height="0%" width="40%" border-width="4">
-                    <data-labels enabled="true"
-                                 format="{point.name}: {point.val}"
-                                 chart-style='{ "color": "#808080", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'
-                                 connector-width="0" distance="0"
-                                 crop="false"
-                                 overflow="justify"></data-labels>
-                </series>
-            </plot-options>
-            <legend enabled="false"></legend>
-            <data-series name="Unique users">
-                <data>{name:'Leads', val: 2543, y:1},
-                      {name:'Marketing qualified lead', val: 1264, y:1},
-                      {name:'Sales qualified lead', val: 305, y: 1},
-                      {name:'Customer engagement', val:141, y: 1},
-                      {name:'Opportunity', val: 65, y: 1},
-                      {name:'Closed / Won', val: 34, y: 1}
-                    </data>
-            </data-series>
-        </vaadin-funnel-chart>
-    </template>
-
-    <script>
-        class BottomFunnelChart extends Polymer.Element {
-            static get is() {
-                return "bottom-funnel-chart";
-            }
-        }
-        customElements.define(BottomFunnelChart.is, BottomFunnelChart);
-    </script>
+  <template>
+    <style>
+    </style>
+    <vaadin-funnel-chart id="main">
+      <exporting enabled="false"></exporting>
+      <chart-title margin="32" chart-style='{ "color": "#808080", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'>Sales &amp; Marketing pipeline</chart-title>
+      <plot-options>
+        <funnel>
+          <colors>["#3090F0", "#98DF58", "#F9DD51", "#24DCD4", "#EC64A5", "#685CB0"]</colors>
+        </funnel>
+        <series neck-width="5%" neck-height="0%" width="40%" border-width="4">
+          <data-labels enabled="true"
+            format="{point.name}: {point.val}"
+            chart-style='{ "color": "#808080", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'
+            connector-width="0" distance="0"
+            crop="false"
+            overflow="justify"></data-labels>
+        </series>
+      </plot-options>
+      <legend enabled="false"></legend>
+      <data-series name="Unique users">
+        <data>{name:'Leads', val: 2543, y:1},
+          {name:'Marketing qualified lead', val: 1264, y:1},
+          {name:'Sales qualified lead', val: 305, y: 1},
+          {name:'Customer engagement', val:141, y: 1},
+          {name:'Opportunity', val: 65, y: 1},
+          {name:'Closed / Won', val: 34, y: 1}
+        </data>
+      </data-series>
+    </vaadin-funnel-chart>
+  </template>
+  <script>
+    class BottomFunnelChart extends Polymer.Element {
+      static get is() {
+        return "bottom-funnel-chart";
+      }
+    }
+    customElements.define(BottomFunnelChart.is, BottomFunnelChart);
+  </script>
 </dom-module>

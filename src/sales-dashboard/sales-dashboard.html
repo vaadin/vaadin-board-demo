@@ -23,7 +23,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style include="shared-styles">
     </style>
-
     <div class="card">
       <demo-plus-sources-area header="Row types" java-source="[[javaSource]]">
         <vaadin-board>
@@ -59,10 +58,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </demo-plus-sources-area>
     </div>
   </template>
-
   <script>
     class SalesDashboardDemo extends Polymer.Element {
-      static get is() { return 'sales-dashboard-demo'; }
+      static get is() {
+        return 'sales-dashboard-demo';
+      }
       static get properties() {
         return {
           javaSource: {
@@ -72,7 +72,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
     }
-
     window.customElements.define(SalesDashboardDemo.is, SalesDashboardDemo);
   </script>
 </dom-module>

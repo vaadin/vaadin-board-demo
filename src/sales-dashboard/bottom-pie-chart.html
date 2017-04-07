@@ -1,38 +1,36 @@
 <link rel="import" href="../../bower_components/vaadin-charts/vaadin-pie-chart.html">
 <dom-module id="bottom-pie-chart">
-    <template>
-        <style>
-        </style>
-            <vaadin-pie-chart id="main">
-                <exporting enabled="false">
-                </exporting>
-                <chart-title margin="32" chart-style='{ "color": "#808080", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'>Working Today</chart-title>
-                </tooltip>
-                <data-series>
-                    <data>
-                        ["Sales", 3],
-                        ["Marketing", 5],
-                        ["R&amp;D", 9],
-                        ["Consulting", 8]
-                    </data>
-                </data-series>
-                <plot-options>
-                  <pie>
-                    <colors>["#3090F0", "#98DF58", "#F9DD51", "#24DCD4", "#EC64A5", "#685CB0"]</colors>
-                  </pie>
-                  <series>
-                    <data-labels enabled="true" format="{point.name}: {point.y}" chart-style='{ "color": "#808080", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'></data-labels>
-                  </series>
-                </plot-options>
-            </vaadin-pie-chart>
-    </template>
+  <template>
+    <style>
+    </style>
+    <vaadin-pie-chart id="main">
+      <exporting enabled="false"></exporting>
+      <chart-title margin="32" chart-style='{ "color": "#808080", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'>Working Today</chart-title>
+      <data-series>
+        <data>
+          ["Sales", 3],
+          ["Marketing", 5],
+          ["R&amp;D", 9],
+          ["Consulting", 8]
+        </data>
+      </data-series>
+      <plot-options>
+        <pie>
+          <colors>["#3090F0", "#98DF58", "#F9DD51", "#24DCD4", "#EC64A5", "#685CB0"]</colors>
+        </pie>
+        <series>
+          <data-labels enabled="true" format="{point.name}: {point.y}" chart-style='{ "color": "#808080", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'></data-labels>
+        </series>
+      </plot-options>
+    </vaadin-pie-chart>
+  </template>
 
-    <script>
-        class BottomPieChart extends Polymer.Element {
-            static get is() {
-                return "bottom-pie-chart";
-            }
-        }
-        customElements.define(BottomPieChart.is, BottomPieChart);
-    </script>
+  <script>
+    class BottomPieChart extends Polymer.Element {
+      static get is() {
+        return "bottom-pie-chart";
+      }
+    }
+    customElements.define(BottomPieChart.is, BottomPieChart);
+  </script>
 </dom-module>
