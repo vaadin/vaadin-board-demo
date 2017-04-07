@@ -15,64 +15,96 @@
             display: none;
           }
         }
+
+        vaadin-split-layout {
+          --vaadin-split-layout-splitter: {
+            background-color: #1B2021;
+            border-left: 1px solid white;
+          };
+        }
       </style>
     </custom-style>
     <style>
       :host {
-        display: block;
+        display: flex;
+        height: 100%;
         background-color: white;
       }
 
-      .nav-panel {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+      #container {
+        display:flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+
       }
 
-      .nav-panel__tabs {
-        display: flex;
-        flex-direction: row;
+      paper-button {
+      }
+
+      .nav-panel {
+        background-color: #1B2021;
+        border-left: 1px solid #ffffff;
+        color: #808F8F;
+        font: 400 13px "Open Sans", Verdana, sans-serif;
+        text-transform: uppercase;
       }
 
       .nav-panel__tabs__button {
+        border-bottom: 1px solid transparent;
         border-radius: 0;
-        box-sizing: border-box;
-        padding-bottom: 5px;
-        padding-left: 0;
-        height: 25px;
-        text-align: start;
-        border-bottom: 2px solid rgb(255, 255, 255);
-        margin-bottom: -2px;
+        padding:0;
+        padding-bottom:6px;
+        margin:0;
+        margin-left: 24px;
+        min-width: auto;
+        color: #00B2EF;
       }
 
       .nav-panel__tabs__button[active] {
-        box-sizing: border-box;
-        border-bottom: 2px solid;
-        border-bottom-color: var(--app-primary-color);
-        margin-bottom: -2px;
-        height: 25px;
+        border-bottom: 1px solid var(--app-primary-color);
+        color: #ffffff;
       }
-      
+
+      #header {
+        padding-left: 36px;
+        padding-top: 20px;
+        padding-bottom:20px;
+        display: inline-block;
+      }
+
       #javabutton {
         display:none;
       }
+
+      #closebutton {
+        float:right;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        color: #00B2EF;
+      }
+
+      #layout {
+          flex-grow: 1;
+      }
+
     </style>
     <div id="container">
       <!--You can implement this either HTML or Java-->
 
       <div class="nav-panel">
-        <div class="nav-panel__tabs">
-          <paper-button id="htmlbutton" class="nav-panel__tabs__button" on-click="showSource" noink toggles
-                        source-type="html">see source
-          </paper-button>
-          <paper-button id="javabutton" class="nav-panel__tabs__button" on-click="showSource" noink toggles
-                        source-type="java">Java
-          </paper-button>
-        </div>
-        <paper-icon-button style="display:none; align-self: flex-end;" id="closebutton" on-click="_close" noink
-                           icon="vaadin-icons:close-circle-o"></paper-icon-button>
+        <span id="header">Source:</span>
+        <paper-button id="htmlbutton" class="nav-panel__tabs__button" on-click="showSource" noink toggles
+          source-type="html">HTML</paper-button>
+        <paper-button id="javabutton" class="nav-panel__tabs__button" on-click="showSource" noink toggles
+          source-type="java">Java</paper-button>
+        <paper-button style="display:none;" id="closebutton" on-click="_close" noink
+          icon="vaadin-icons:close-circle-o">
+          <iron-icon icon="vaadin-icons:eye-slash" style="padding-right:8px;"></iron-icon> Hide source
+        </paper-button>
       </div>
-      <vaadin-split-layout class="hiddensplitter" style="height:100%; right: 0px;" id="layout" vertical>
+      <vaadin-split-layout class="hiddensplitter" id="layout" vertical>
         <demo-area id="example" header="[[header]]">
         </demo-area>
       </vaadin-split-layout>
@@ -129,11 +161,12 @@
         this.$.closebutton.style.display = "none";
         this.$.layout.classList.add("hiddensplitter");
         this.$.layout.updateStyles();
+        this._clearButtonsActive();
       }
 
       _createSourceElement() {
         this.sourceLayout = document.createElement("demo-snippet");
-        this.sourceLayout.style.height = "250px";
+        this.sourceLayout.style.height = "50%";
       }
 
       _clearButtonsActive() {

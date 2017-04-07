@@ -76,6 +76,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding-top: 140px;
         color:var(--app-secondary-color);
       }
+
+      #iron-pages {
+        height: 100%;
+      }
     </style>
 
     <app-location route="{{route}}"  use-hash-as-path></app-location>
@@ -102,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </app-toolbar>
         </app-header>
 
-        <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+        <iron-pages id="iron-pages" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
           <sales-dashboard-demo name="sales-dashboard"></sales-dashboard-demo>
           <row-types-demo name="row-types"></row-types-demo>
             <my-view404 name="view404"></my-view404>
