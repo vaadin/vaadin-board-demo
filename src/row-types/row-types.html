@@ -19,12 +19,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
        :host {
         height: 100%;
+        background: green;
+      }
+
+      ::slotted(.foo) {
+          background-color: black;
       }
     </style>
     <div class="card">
       <demo-plus-sources-area header="Row types" java-source="[[javaSource]]">
         <vaadin-board>
-          <vaadin-board-row>
+          <vaadin-board-row class="foo">
             <demo-element item-number="1" item-size="1/4"></demo-element>
             <demo-element item-number="2" item-size="1/4"></demo-element>
             <demo-element item-number="3" item-size="1/4"></demo-element>
