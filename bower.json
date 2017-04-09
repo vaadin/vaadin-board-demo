@@ -19,7 +19,9 @@
     "vaadin-icons": "v2.0.0",
     "vaadin-split-layout": "v1.1.0-alpha1",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.5",
-    "vaadin-charts": "#2.0-preview"
+    "vaadin-charts": "#2.0-preview",
+    "paper-dialog": "2.0-preview",
+    "iron-image": "2.0-preview"
   },
   "devDependencies": {
     "web-component-tester": "6.0.0-prerelease.5"

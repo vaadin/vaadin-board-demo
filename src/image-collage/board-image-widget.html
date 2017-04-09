@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<dom-module id="board-image-widget">
+  <template>
+    <style>
+      :host {
+        display: block;
+        overflow: hidden;
+        min-height:300px;
+        padding:4px;
+      }
+      /*This extra div is needed because of IE11 bug
+       https://github.com/philipwalton/flexbugs/issues/3
+      */
+      .border {
+        box-sizing: border-box;
+        border: 8px solid #dedede;
+        background-size: cover;
+        background-position: center;
+        height:100%;
+      }
+      .border img {
+
+      }
+
+    </style>
+    <div
+      on-click="handleClick"
+      class="border"
+      style="background-image: url('../../images/image-collage/small/[[image]].jpg');">
+    </div>
+  </template>
+
+  <script>
+    class BoardImageWidget extends Polymer.Element {
+      static get is() {
+        return 'board-image-widget';
+      }
+
+      static get properties() {
+        return {
+          image: {
+            type: String
+          }
+        }
+      }
+      handleClick() {
+        var event = new CustomEvent('open-image', {bubbles: true, composed: true, detail: {image: this.image}});
+        this.dispatchEvent(event);
+      }
+    }
+    customElements.define(BoardImageWidget.is, BoardImageWidget);
+  </script>
+</dom-module>
