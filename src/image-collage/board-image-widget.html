@@ -6,27 +6,31 @@
         display: flex;
         overflow: hidden;
         min-height:300px;
-        padding:4px;
       }
       /*This extra div is needed because of IE11 bug
        https://github.com/philipwalton/flexbugs/issues/3
       */
-      .border {
+      .padding {
+        padding:4px;
+        display:flex;
+        width:100%;
+      }
+
+      .image {
         box-sizing: border-box;
         border: 8px solid #dedede;
         background-size: cover;
         background-position: center;
         width:100%;
       }
-      .border img {
-
-      }
 
     </style>
-    <div
-      on-click="handleClick"
-      class="border"
-      style$="background-image: url('../../images/image-collage/small/[[image]].jpg');">
+    <div class="padding">
+      <div
+        on-click="handleClick"
+        class="image"
+        style$="background-image: url('../../images/image-collage/small/[[image]].jpg');">
+      </div>
     </div>
   </template>
 
