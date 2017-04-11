@@ -18,7 +18,7 @@
     "vaadin-board": "vaadin/vaadin-board#master",
     "vaadin-icons": "v2.0.0",
     "vaadin-split-layout": "v1.1.0-alpha1",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.5",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.8",
     "vaadin-charts": "#2.0-preview",
     "paper-dialog": "2.0-preview",
     "iron-image": "2.0-preview"
@@ -30,7 +30,7 @@
   "resolutions": {
     "iron-iconset-svg": "2.0-preview",
     "iron-icon": "2.0-preview",
-    "webcomponentsjs": "^1.0.0-rc.5",
+    "webcomponentsjs": "v1.0.0-rc.8",
     "polymer": "^2.0",
     "iron-resizable-behavior": "2.0-preview",
     "iron-flex-layout": "2.0-preview",
