@@ -22,41 +22,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="sales-dashboard-demo">
   <template>
     <style include="shared-styles">
-
+      :host {
+        height: 100%;
+      }
     </style>
-
     <div class="card">
       <demo-plus-sources-area header="Row types" java-source="[[javaSource]]">
         <vaadin-board>
-          <vaadin-board-row id="firstrow" style="flex:1 1 20%">
-            <top-chart caption="Billed" overall-value="6350" values="[29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 29.9]"></top-chart>
-            <top-chart caption="Outstanding" overall-value="273" values="[12.9, 13.5, 16.4, 19.2, 14.0, 17.0, 15.6, 13.5, 16.4, 19.1, 15.6, 19.9]"></top-chart>
-            <top-chart caption="Refunded" overall-value="170" values="[3.9, 6.5, 16.4, 19.2, 14.0, 17.0, 15.6, 18.5, 22.4, 14.1, 15.6, 19.9]"></top-chart>
-            <top-chart caption="Total Revenue" overall-value="6623" values="[29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 29.9]"></top-chart>
+          <vaadin-board-row style="border-bottom:1px solid #DDDDDD; flex:1 1 20%" id="firstrow">
+            <top-chart caption="Total Revenue" overall-value="6350" chart-color="#3090F0"
+                       values="[63, 51, 70, 83, 87, 37]"></top-chart>
+            <top-chart caption="Billed" overall-value="273" chart-color="#98DF58"
+                       values="[63, 68, 67, 65, 83, 42]"></top-chart>
+            <top-chart caption="Outstanding" overall-value="170" chart-color="#98DF58"
+                       values="[5, 78, 7, 1, 54, 37]"></top-chart>
+            <top-chart caption="Refunded" overall-value="6623" chart-color="#98DF58"
+                       values="[13, 9, 51, 62, 8, 8]"></top-chart>
           </vaadin-board-row>
           <vaadin-board-row style="min-height:300px; flex:2 1 40%;">
             <mid-column-chart board-cols="3">
             </mid-column-chart>
             <vaadin-board-row board-cols="1">
-              <mid-line-chart caption="Avg price" overall-value="25" values="[29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]"></mid-line-chart>
-              <mid-line-chart caption="Customers" overall-value="265" values="[29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]"></mid-line-chart>
-              <mid-line-chart caption="Churn" overall-value="15" values="[29.9, 22.5, 17.4, 25.2, 24.0, 22.0, 18.6, 26.5, 19.4, 18.1, 17.6, 16.4]"></mid-line-chart>
+              <mid-line-chart caption="Customers" overall-value="↑501" chart-color="#3090F0"
+                              values="[29.9, 71.5, 106.4, 80.2, 83.0, 95.0, 92.6, 112.5, 146.4, 183.1, 201.6, 220.4]"></mid-line-chart>
+              <mid-line-chart caption="ROI" overall-value="↑75%" chart-color="#3090F0"
+                              values="[29.9, 25.5, 20.4, 24.2, 29.0, 31.0, 28.6, 27.5, 32.4, 33.1, 35.6, 35.4]"></mid-line-chart>
+              <mid-line-chart caption="Churn" overall-value="↓32%" chart-color="#EC64A5"
+                              values="[29.9, 27.5, 32.4, 28.2, 26.0, 27.0, 27.6, 25.5, 24.4, 23.1, 22.6, 21.4]"></mid-line-chart>
             </vaadin-board-row>
           </vaadin-board-row>
           <vaadin-board-row style="min-height:300px; flex:1 1 30%;">
-            <bottom-pie-chart caption="Products">
-            </bottom-pie-chart>
-            <bottom-funnel-chart caption="Funnel">
+            <bottom-funnel-chart>
             </bottom-funnel-chart>
+            <bottom-pie-chart>
+            </bottom-pie-chart>
           </vaadin-board-row>
         </vaadin-board>
       </demo-plus-sources-area>
     </div>
   </template>
-
   <script>
     class SalesDashboardDemo extends Polymer.Element {
-      static get is() { return 'sales-dashboard-demo'; }
+      static get is() {
+        return 'sales-dashboard-demo';
+      }
       static get properties() {
         return {
           javaSource: {
@@ -66,7 +75,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
     }
-
     window.customElements.define(SalesDashboardDemo.is, SalesDashboardDemo);
   </script>
 </dom-module>

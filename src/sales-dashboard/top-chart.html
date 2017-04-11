@@ -1,38 +1,48 @@
-<link rel="import" href="../../bower_components/vaadin-charts/vaadin-line-chart.html">
+<link rel="import" href="../../bower_components/vaadin-charts/vaadin-column-chart.html">
 <dom-module id="top-chart">
   <template>
     <style>
       #main {
-        height: 300px;
-        display: flex;
-        flex-direction: column;
+        height:300px;
+        display:flex;
+        flex-direction:column;
+        padding:8px;
+      }
+
+      #titleStyle {
+        color:#808080;
+        font: 400 14px 'Open Sans', Verdana, sans-serif;
+        text-align: center; flex-grow:0;">
       }
     </style>
     <div id="main">
-      <div style="font-size:33px; text-align: center; flex-grow:0;">
-        $[[overallValue]]
-      </div>
-      <vaadin-line-chart style="flex-grow:1">
-        <exporting enabled="false">
-        </exporting>
-        <chart-title>[[caption]]</chart-title>
-        <x-axis line-width=0 minor-grid-line-width=0>
+      <vaadin-column-chart style="flex-grow:1">
+        <exporting enabled="false"></exporting>
+        <chart spacing-top="32" spacing-right="32" spacing-bottom="32" spacing-left="32"></chart>
+        <chart-title margin="32" chart-style='{ "color": "#808080", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'>[[caption]] / $[[overallValue]]</chart-title>
+        <x-axis minor-grid-line-width=0>
           <labels enabled="false"></labels>
         </x-axis>
-        <y-axis line-width=0 minor-grid-line-width=0 grid-line-width=0>
+        <y-axis tick-interval="20" line-width=0 minor-grid-line-width=0 grid-z-index="4" grid-line-color="#DDDDDD">
           <labels enabled="false"></labels>
           <chart-title text=""></chart-title>
         </y-axis>
         <legend enabled="false">
-
         </legend>
+        <plot-options>
+          <column group-padding="0" border-width="1"></column>
+          <series>
+            <data-labels enabled="true" chart-style='{ "color": "#808080", "font": "400 14px \"Open Sans\", Verdana, sans-serif" }'></data-labels>
+          </series>
+        </plot-options>
         <data-series name="Short">
+          <color>[[chartColor]]</color>
           <data>[[values]]</data>
           <marker enabled="false"></marker>
         </data-series>
-      </vaadin-line-chart>
+      </vaadin-column-chart>
     </div>
-  </template>
+    </template>
 
   <script>
     class TopChart extends Polymer.Element {
@@ -50,7 +60,11 @@
           },
           overallValue: {
             type: Number
-          }
+          },
+          chartColor: {
+            type: String,
+            value: "#3090F0"
+          },
         }
       }
     }
