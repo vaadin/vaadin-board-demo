@@ -1,0 +1,146 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../shared-styles.html">
+<link rel="import" href="board-image-widget.html">
+<link rel="import" href="../common/demo-plus-sources-area.html">
+<link rel="import" href="../../bower_components/vaadin-board/vaadin-board.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/vaadin-icons/vaadin-icons.html">
+
+<dom-module id="image-collage">
+  <template>
+    <style include="shared-styles">
+       :host {
+        height: 100%;
+      }
+
+      #dialog {
+        /* app-drawer and app-header are causing problems stopping
+           from putting this big and center. the dialog ends below
+           the side panels. Having it small for now but should be
+           made bigger if the side panels are fixed. */
+        width:50%;
+        height:50%;
+        border: 8px solid #dedede;
+        box-sizing: border-box;
+      }
+
+      #image-holder {
+        width:100%;
+        height:100%;
+        margin:0;
+        box-sizing: border-box;
+      }
+
+      #closedialog{
+        padding:0;
+        margin:0;
+        position:absolute;
+        top:-20px;
+        left:-20px;
+        z-index:2;
+        background-color:white;
+        border-radius:50%;
+        padding:8px;
+        box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+        color: #757575;
+      }
+    </style>
+    <div class="card">
+      <demo-plus-sources-area header="Image collage" java-source="[[javaSource]]">
+        <vaadin-board>
+          <vaadin-board-row>
+            <board-image-widget image="01"></board-image-widget>
+            <vaadin-board-row>
+              <board-image-widget image="02"></board-image-widget>
+              <board-image-widget image="03"></board-image-widget>
+            </vaadin-board-row>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <board-image-widget image="24"></board-image-widget>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <board-image-widget image="05"></board-image-widget>
+            <board-image-widget image="06"></board-image-widget>
+            <board-image-widget image="07"></board-image-widget>
+            <board-image-widget image="08"></board-image-widget>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <board-image-widget image="09"></board-image-widget>
+            <board-image-widget image="10" board-cols="2"></board-image-widget>
+            <board-image-widget image="11"></board-image-widget>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <board-image-widget image="12" board-cols="3"></board-image-widget>
+            <board-image-widget image="13"></board-image-widget>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <vaadin-board-row>
+              <board-image-widget image="14"></board-image-widget>
+              <board-image-widget image="15"></board-image-widget>
+            </vaadin-board-row>
+            <vaadin-board-row>
+              <board-image-widget image="16"></board-image-widget>
+              <board-image-widget image="17"></board-image-widget>
+            </vaadin-board-row>
+            <vaadin-board-row>
+              <board-image-widget image="18"></board-image-widget>
+              <board-image-widget image="19"></board-image-widget>
+            </vaadin-board-row>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <vaadin-board-row>
+              <board-image-widget image="20"></board-image-widget>
+              <board-image-widget image="21"></board-image-widget>
+              <board-image-widget image="22"></board-image-widget>
+            </vaadin-board-row>
+            <board-image-widget image="23" board-cols="2"></board-image-widget>
+          </vaadin-board-row>
+          <vaadin-board-row>
+            <board-image-widget image="04"></board-image-widget>
+            <board-image-widget image="25"></board-image-widget>
+          </vaadin-board-row>
+        </vaadin-board>
+      </demo-plus-sources-area>
+      <paper-dialog id="dialog">
+        <paper-icon-button on-click="closedialog" id="closedialog" icon="vaadin-icons:close"></paper-icon-button>
+        <iron-image id="image-holder" sizing="cover"
+          src="[[bigImage]]"></iron-image>
+      </paper-dialog>
+    </div>
+  </template>
+
+  <script>
+    class ImageCollage extends Polymer.Element {
+      static get is() { return 'image-collage'; }
+      static get properties() {
+        return {
+          javaSource: {
+            value: "No Java source",
+            type: String
+          },
+          bigImage: {
+            value: "01",
+            type: String
+          }
+        }
+      }
+      ready() {
+        super.ready();
+        this.addEventListener('open-image', e => this._openImage(e.detail.image));
+      }
+
+      closedialog() {
+        this.$.dialog.close();
+      }
+
+      _openImage(image){
+        console.log('opening image ' + image)
+        this.bigImage = "../../images/image-collage/large/" + image + ".jpg"
+        this.$.dialog.open();
+      }
+    }
+    window.customElements.define(ImageCollage.is, ImageCollage);
+  </script>
+</dom-module>
