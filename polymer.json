@@ -3,6 +3,7 @@
   "shell": "src/board-demo-app.html",
   "fragments": [
     "src/sales-dashboard/sales-dashboard.html",
+    "src/image-collage/image-collage.html",
     "src/row-types/row-types.html",
     "src/404/404.html"
   ],
@@ -19,5 +20,11 @@
     "rules": [
       "polymer-2"
     ]
-  }
+  },
+  "builds": [{
+    "name": "vbd-es5",
+    "js": {"minify": false, "compile": true},
+    "css": {"minify": false},
+    "html": {"minify": false}
+  }]
 }

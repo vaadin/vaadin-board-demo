@@ -121,7 +121,7 @@
             type: String
           },
           bigImage: {
-            value: "01",
+            value: "",
             type: String
           }
         }
@@ -136,8 +136,7 @@
       }
 
       _openImage(image){
-        console.log('opening image ' + image)
-        this.bigImage = "../../images/image-collage/large/" + image + ".jpg"
+        this.bigImage = "./images/image-collage/large/" + image + ".jpg"
         this.$.dialog.open();
       }
     }
