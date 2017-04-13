@@ -8,27 +8,23 @@
 
 <dom-module id="demo-plus-sources-area">
   <template>
-    <custom-style>
-      <style>
-        #layout.hiddensplitter {
-          --vaadin-split-layout-splitter: {
-            display: none;
-          }
-        }
-
-        vaadin-split-layout {
-          --vaadin-split-layout-splitter: {
-            background-color: #1B2021;
-            border-left: 1px solid white;
-          };
-        }
-      </style>
-    </custom-style>
     <style>
       :host {
         display: flex;
         height: 100%;
         background-color: white;
+
+        --vaadin-split-layout-splitter: {
+          background-color: #1B2021;
+          border-left: 1px solid white;
+        };
+      }
+
+      :host(.hiddensplitter) {
+        --vaadin-split-layout-splitter: {
+          display: none;
+          opacity: 0;
+        }
       }
 
       #container {
@@ -104,7 +100,7 @@
           <iron-icon icon="vaadin-icons:eye-slash" style="padding-right:8px;"></iron-icon> Hide source
         </paper-button>
       </div>
-      <vaadin-split-layout class="hiddensplitter" id="layout" vertical>
+      <vaadin-split-layout id="layout" vertical>
         <demo-area id="example" header="[[header]]">
         </demo-area>
       </vaadin-split-layout>
@@ -151,6 +147,8 @@
         super.ready();
         this.$.example.innerHTML = this.innerHTML;
         this.htmlSource = this.innerHTML;
+        this.classList.add('hiddensplitter');
+        this.updateStyles();
       }
 
       _close() {
@@ -159,8 +157,8 @@
           this.sourceLayout = undefined;
         }
         this.$.closebutton.style.display = "none";
-        this.$.layout.classList.add("hiddensplitter");
-        this.$.layout.updateStyles();
+        this.classList.add('hiddensplitter');
+        this.updateStyles();
         this._clearButtonsActive();
       }
 
@@ -175,8 +173,8 @@
       }
 
       showSource(e) {
-        this.$.layout.classList.remove("hiddensplitter");
-        this.$.layout.updateStyles();
+        this.classList.remove("hiddensplitter");
+        this.updateStyles();
         this._clearButtonsActive();
         this.$.closebutton.style.display = "";
         if (this.sourceLayout) {
