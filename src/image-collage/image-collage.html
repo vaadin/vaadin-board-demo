@@ -13,15 +13,12 @@
     <style include="shared-styles">
        :host {
         height: 100%;
+        width: 100%;
       }
 
       #dialog {
-        /* app-drawer and app-header are causing problems stopping
-           from putting this big and center. the dialog ends below
-           the side panels. Having it small for now but should be
-           made bigger if the side panels are fixed. */
-        width:50%;
-        height:50%;
+        width:80%;
+        height:80%;
         border: 8px solid #dedede;
         box-sizing: border-box;
       }
@@ -31,6 +28,7 @@
         height:100%;
         margin:0;
         box-sizing: border-box;
+        cursor: pointer;
       }
 
       #closedialog{
@@ -103,9 +101,9 @@
           </vaadin-board-row>
         </vaadin-board>
       </demo-plus-sources-area>
-      <paper-dialog id="dialog">
+      <paper-dialog id="dialog" modal>
         <paper-icon-button on-click="closedialog" id="closedialog" icon="vaadin-icons:close"></paper-icon-button>
-        <iron-image id="image-holder" sizing="cover"
+        <iron-image on-click="closedialog" id="image-holder" sizing="cover"
           src="[[bigImage]]"></iron-image>
       </paper-dialog>
     </div>

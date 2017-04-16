@@ -16,7 +16,6 @@
 
         --vaadin-split-layout-splitter: {
           background-color: #1B2021;
-          border-left: 1px solid white;
         };
       }
 
@@ -41,7 +40,6 @@
 
       .nav-panel {
         background-color: #1B2021;
-        border-left: 1px solid #ffffff;
         color: #808F8F;
         font: 400 13px "Open Sans", Verdana, sans-serif;
         text-transform: uppercase;
@@ -83,6 +81,7 @@
 
       #layout {
           flex-grow: 1;
+          height:100%;
       }
 
     </style>
@@ -164,7 +163,7 @@
 
       _createSourceElement() {
         this.sourceLayout = document.createElement("demo-snippet");
-        this.sourceLayout.style.height = "50%";
+        this.sourceLayout.style.height = "100%";
       }
 
       _clearButtonsActive() {

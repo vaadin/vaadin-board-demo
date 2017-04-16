@@ -3,7 +3,6 @@
   "description": "Demo app for vaadin-board element",
   "main": "index.html",
   "dependencies": {
-    "app-layout": "PolymerElements/app-layout#2.0-preview",
     "app-route": "PolymerElements/app-route#2.0-preview",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0-preview",
     "iron-icon": "PolymerElements/iron-icon#2.0-preview",
