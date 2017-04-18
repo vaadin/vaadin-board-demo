@@ -3,9 +3,8 @@
   "description": "Demo app for vaadin-board element",
   "main": "index.html",
   "dependencies": {
-    "app-layout": "PolymerElements/app-layout#2.0-preview",
     "app-route": "PolymerElements/app-route#2.0-preview",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0-preview",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#bbf6198be548670873dd7c4c8c327fd278414fe7",
     "iron-icon": "PolymerElements/iron-icon#2.0-preview",
     "iron-iconset-svg": "PolymerElements/iron-iconset-svg#2.0-preview",
     "iron-localstorage": "PolymerElements/iron-localstorage#2.0-preview",
@@ -33,7 +32,7 @@
     "webcomponentsjs": "v1.0.0-rc.8",
     "polymer": "^2.0",
     "iron-resizable-behavior": "2.0-preview",
-    "iron-flex-layout": "2.0-preview",
+    "iron-flex-layout": "bbf6198be548670873dd7c4c8c327fd278414fe7",
     "iron-meta": "2.0-preview"
   }
 }

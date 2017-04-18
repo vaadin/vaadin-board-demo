@@ -1,52 +1,33 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
-<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/vaadin-icons/vaadin-icons.html">
 <link rel="import" href="my-icons.html">
+<link rel="import" href="common/header-bar.html">
 
 <dom-module id="board-demo-app">
   <template>
     <style>
       :host {
-        --app-primary-color: #00B4F0;
+        --water: #00B4F0;
+        --charcoal: #33383A;
+
+        --app-primary-color: var(--water);
         --app-secondary-color: #e5e8e8;
 
-        display: block;
-
-        --app-drawer-content-container: {
-          background-color: #33383A;
-        };
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        width: 100%;
       }
 
-      app-drawer-layout:not([narrow]) [drawer-toggle] {
-        display: none;
-      }
-
-      app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
-      }
-
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
+      #logoandname {
+        display:none;
+        margin-bottom:20px;
       }
 
       .drawer-list {
@@ -55,71 +36,198 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .drawer-list a {
         display: block;
-        padding: 0 16px;
+        padding: 8px 16px;
         text-decoration: none;
-        color: var(--app-secondary-color);
-        line-height: 40px;
+        font: 400 16px 'Open Sans', Verdana, sans-serif;
       }
 
       .drawer-list a.iron-selected {
         background: var(--app-primary-color);
       }
 
-      .logo {
-        margin-top: 20px;
-        font-weight: 400;
-        font-size: 1.2em;
-        letter-spacing: 0;
-        text-align: center;
-        background: transparent url("../images/board-icon-darkbg.svg") no-repeat 50% 10px;
-        background-size: 110px 110px;
-        padding-top: 140px;
-        color:var(--app-secondary-color);
+      .drawer-list a.iron-selected .menu-item-description {
+        color: white;
+      }
+
+      .menu-item-header {
+        display:block;
+        color: white;
+        line-height: 24px;
+      }
+
+      .menu-item-description {
+        display:block;
+        color: #808080;
+        line-height: 20px;
+        font-size: 12px;
       }
 
       #iron-pages {
         height: 100%;
+      }
+
+      #sideMenu {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        position:absolute;
+        overflow-x: hidden;
+
+        z-index: 2;
+        border-right: 1px solid white;
+        background-color: var(--charcoal);
+        flex-shrink: 0;
+        color: white;
+        -webkit-transition: -webkit-transform 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        visibility: hidden;
+        box-sizing: border-box;
+      }
+
+      #sideMenu.open {
+        transform: translateX(0);
+        visibility: visible;
+      }
+
+      #logo {
+        display: block;
+        width: 70px;
+        height: 70px;
+        margin: 24px auto;
+      }
+
+      #productname {
+        color: white;
+        font: 400 16px 'Open Sans', Verdana, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+
+      #closeMenu {
+        padding: 16px;
+        width: 50px;
+        height: 50px;
+      }
+
+      #content {
+        height: 100%;
+        width: 100%;
+        flex-grow:1;
+        -webkit-transition: -webkit-transform 0.3s ease-in-out;
+        transition: padding 0.3s ease-in-out;
+        padding-top:50px;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      #curtain {
+        position:absolute;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        width: 0;
+        transition: opacity 0.5s ease-in-out;
+        background-color: black;
+        opacity:0;
+        z-index:1;
+      }
+
+      #curtain.open {
+        opacity: 0.5;
+        width: 100%;
+      }
+
+      #header {
+        transition: all 0.3s ease-in-out;
+      }
+
+      @media screen and (max-width: 799px) {
+        #sideMenu {
+          transform: translateX(-100%);
+        }
+
+        #header {
+          transform: translateY(0);
+        }
+      }
+
+      @media screen and (min-width: 800px) {
+        #sideMenu {
+          transform: translateX(-300px);
+          width:300px;
+        }
+      }
+
+      @media screen and (min-width: 1100px) {
+        /* differentiate tablet and desktop */
+
+        #content {
+          padding-left:300px;
+          padding-top:0;
+        }
+        #sideMenu {
+          transform: translateX(0);
+          visibility: visible;
+        }
+
+        #curtain.open {
+          display:none;
+        }
+
+        #header {
+          transform: translateY(-100%);
+        }
+
+        #closeMenu {
+          display: none;
+        }
+
+        #logoandname {
+          display:block;
+        }
       }
     </style>
 
     <app-location route="{{route}}"  use-hash-as-path></app-location>
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-    <app-drawer-layout fullbleed responsive-width="800px">
-      <!-- Drawer content -->
-      <app-drawer id="drawer" slot="drawer">
-        <div class="logo">Vaadin Board</div>
-
+      <div id="curtain" on-click="_closeMenu"></div>
+      <div id="sideMenu">
+        <div id="logoandname">
+          <img id="logo" src="../images/board-icon-darkbg.svg">
+          <div id="productname">Vaadin Board</div>
+        </div>
+        <paper-icon-button id="closeMenu" icon="vaadin-icons:close" on-click="_closeMenu"></paper-icon-button>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="sales-dashboard" href="#/sales-dashboard">Sales Dashboard</a>
-          <a name="image-collage" href="#/image-collage">Image Collage</a>
-          <a name="row-types" href="#/row-types">Row Types</a>
+          <a name="sales-dashboard" href="#/sales-dashboard">
+            <span class="menu-item-header">Sales Dashboard</span>
+            <span class="menu-item-description">A feature rich and customizable sample template for a business overview tool. Includes real time performance indicators and history data displays.</span></a>
+          <a name="image-collage" href="#/image-collage"><span class="menu-item-header">Image Collage</span>
+          <span class="menu-item-description">Vaadin Board can be used to lay out also other things than charts. Here images are laid out to produce a beuatiful collage.</span></a>
+          <a name="row-types" href="#/row-types"><span class="menu-item-header">Row Types</span>
+          <span class="menu-item-description">A technical demo displaying available row type options. Test the container flow by zooming the viewport into different device sizes.</span></a>
         </iron-selector>
-      </app-drawer>
+      </div>
+
+      <header-bar id="header" demo=[[page]]></header-bar>
 
       <!-- Main content -->
-      <app-header-layout has-scrolling-region>
-
-        <app-header slot="header" condenses reveals effects="waterfall">
-          <app-toolbar>
-            <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>Vaadin Board Demo</div>
-          </app-toolbar>
-        </app-header>
-
+      <div id="content">
         <iron-pages id="iron-pages" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
           <sales-dashboard-demo name="sales-dashboard"></sales-dashboard-demo>
           <row-types-demo name="row-types"></row-types-demo>
           <image-collage name="image-collage"></image-collage>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
-      </app-header-layout>
-    </app-drawer-layout>
+    </div>
   </template>
 
   <script>
     class MyApp extends Polymer.Element {
-
       static get is() { return 'board-demo-app'; }
 
       static get properties() {
@@ -129,7 +237,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             reflectToAttribute: true,
             observer: '_pageChanged',
 	          value: 'sales-dashboard'
-          },
+          }
         };
       }
 
@@ -137,6 +245,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return [
           '_routePageChanged(routeData.page)',
         ];
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        var that = this;
+        this.$.header.addEventListener('open-menu', e => this._openMenu());
       }
 
       _routePageChanged(page) {
@@ -149,25 +263,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // If no page was found in the route data, page will be an empty string.
         // Deault to 'view1' in that case.
         this.page = page || 'row-types';
-
-        // Close a non-persistent drawer when the page & route are changed.
-        if (!this.$.drawer.persistent) {
-          this.$.drawer.close();
-        }
       }
 
       _pageChanged(page) {
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl(page + '/'+page+'.html');
-        Polymer.importHref(
-          resolvedPageUrl,
-          null,
-          this._showPage404.bind(this),
-          true);
+        Polymer.importHref(resolvedPageUrl, null,
+          this._showPage404.bind(this), true);
+        this._closeMenu();
       }
 
       _showPage404() {
         this.page = '404';
+      }
+
+      _openMenu() {
+        this.$.curtain.classList.add('open');
+        this.$.sideMenu.classList.add('open');
+      }
+
+      _closeMenu() {
+        this.$.curtain.classList.remove('open');
+        this.$.sideMenu.classList.remove('open');
       }
     }
 
