@@ -26,5 +26,10 @@
     "js": {"minify": false, "compile": true},
     "css": {"minify": false},
     "html": {"minify": false}
+  },{
+    "name": "vbd",
+    "js": {"minify": false, "compile": false},
+    "css": {"minify": false},
+    "html": {"minify": false}
   }]
 }
