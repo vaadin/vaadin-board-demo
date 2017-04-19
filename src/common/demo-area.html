@@ -23,7 +23,8 @@
         background-color: white;
         padding:16px;
         width:100%;
-        overflow: scroll;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
 
       #buttons {
@@ -31,16 +32,14 @@
         position: absolute;
         z-index: 1;
         bottom: 0;
-        left:50%;
-        transform: translateX(-50%);
-        width: auto;
+        left:calc(50% - 165px);
+        width: 330px;
         border: 1px solid white;
         border-bottom:none;
         background: #1B2021;
-        -webkit-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.75);
         box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.75);
         padding: 8px 20px;
+        box-sizing: border-box;
 
       }
 
