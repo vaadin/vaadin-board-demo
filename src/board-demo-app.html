@@ -6,6 +6,7 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/vaadin-icons/vaadin-icons.html">
+<link rel="import" href="../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="my-icons.html">
 <link rel="import" href="common/header-bar.html">
 
@@ -196,7 +197,7 @@
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
       <div id="curtain" on-click="_closeMenu"></div>
-      <div id="sideMenu">
+      <div id="sideMenu" on-transitionend="_sideMenuTransitionend">
         <div id="logoandname">
           <img id="logo" src="./images/board-icon-darkbg.svg">
           <div id="productname">Vaadin Board</div>
@@ -213,7 +214,7 @@
         </iron-selector>
       </div>
 
-      <header-bar id="header" demo=[[page]]></header-bar>
+      <header-bar id="header" demo=[[page]] on-open-menu="_openMenu"></header-bar>
 
       <!-- Main content -->
       <div id="content">
@@ -227,7 +228,7 @@
   </template>
 
   <script>
-    class MyApp extends Polymer.Element {
+    class MyApp extends Polymer.mixinBehaviors([Polymer.IronResizableBehavior], Polymer.Element) {
       static get is() { return 'board-demo-app'; }
 
       static get properties() {
@@ -247,10 +248,9 @@
         ];
       }
 
-      connectedCallback() {
-        super.connectedCallback();
-        var that = this;
-        this.$.header.addEventListener('open-menu', e => this._openMenu());
+      _sideMenuTransitionend(el) {
+          //0.3s is set for #sideMenu transition
+          this.debounce('_notifyResize', this.notifyResize,300);
       }
 
       _routePageChanged(page) {
