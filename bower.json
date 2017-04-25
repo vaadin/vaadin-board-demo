@@ -30,7 +30,7 @@
   "resolutions": {
     "iron-iconset-svg": "2.0-preview",
     "iron-icon": "2.0-preview",
-    "webcomponentsjs": "1.0.0-rc.8",
+    "webcomponentsjs": "^1.0.0-rc.8",
     "polymer": "^2.0",
     "iron-resizable-behavior": "2.0-preview",
     "iron-flex-layout": "bbf6198be548670873dd7c4c8c327fd278414fe7",
