@@ -22,13 +22,13 @@
     ]
   },
   "builds": [{
-    "name": "vbd-es5",
+    "name": "vaadin-board-demo-es5",
     "bundle": true,
     "js": {"minify": true, "compile": true},
     "css": {"minify": true},
     "html": {"minify": false}
   },{
-    "name": "vbd",
+    "name": "vaadin-board-demo",
     "bundle": true,
     "js": {"minify": true, "compile": false},
     "css": {"minify": true},
