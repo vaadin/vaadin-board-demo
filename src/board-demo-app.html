@@ -146,6 +146,61 @@
         transition: all 0.3s ease-in-out;
       }
 
+      #externalresource {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      #resourcelinks {
+        list-style: none;
+        display: flex;
+        margin: 14px 0;
+        padding: 0;
+        justify-content: center;
+      }
+
+      #resourcelinks a {
+        text-transform: uppercase;
+        color: #0B98C7;
+        padding: 0 5px;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      #githubsource {
+        background: #404549;
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #githubsource a {
+        color: #e5e8e8;
+        font-size: 12px;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+      }
+
+      #githublogo {
+        fill: #8b8e91;
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
+        padding-right: 10px;
+      }
+
+      .resourcelinks__item + *:before {
+        content: '•';
+        color: #FFFFFF;
+        vertical-align: middle;
+      }
+
       @media screen and (max-width: 799px) {
         #sideMenu {
           transform: translateX(-100%);
@@ -212,6 +267,19 @@
           <a name="row-types" href="#/row-types"><span class="menu-item-header">Row Types</span>
           <span class="menu-item-description">A technical demo displaying available row type options. Test the container flow by zooming the viewport into different device sizes.</span></a>
         </iron-selector>
+        <div id="externalresource">
+          <ul id="resourcelinks">
+            <li class="resourcelinks__item"><a href="https://vaadin.com/elements/-/element/vaadin-board">Home Page</a></li>
+            <li class="resourcelinks__item" style="display: none"><a href="#">Javadoc</a></li>
+            <li class="resourcelinks__item"><a href="https://vaadin.com/docs/-/part/board/">Manual</a></li>
+          </ul>
+          <div id="githubsource">
+            <a href="https://github.com/vaadin/vaadin-board-demo">
+              <iron-icon id="githublogo" icon="my-logos:github"></iron-icon>
+              <span>Source code on Github</span>
+            </a>
+          </div>
+        </div>
       </div>
 
       <header-bar id="header" demo=[[page]] on-open-menu="_openMenu"></header-bar>
