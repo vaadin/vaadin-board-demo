@@ -85,6 +85,10 @@
         transition: all 0.3s ease-in-out;
         visibility: hidden;
         box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       #sideMenu.open {
@@ -146,6 +150,59 @@
         transition: all 0.3s ease-in-out;
       }
 
+      #externalresource {
+        font-family: 'Open Sans', sans-serif;
+        margin-top: 20px;
+      }
+
+      #resourcelinks {
+        list-style: none;
+        display: flex;
+        margin: 14px 0;
+        padding: 0;
+        justify-content: center;
+      }
+
+      #resourcelinks a {
+        text-transform: uppercase;
+        color: #0B98C7;
+        padding: 0 5px;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      #githubsource {
+        background: #404549;
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #githubsource a {
+        color: #e5e8e8;
+        font-size: 12px;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+      }
+
+      #githublogo {
+        fill: #8b8e91;
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
+        padding-right: 10px;
+      }
+
+      .resourcelinks__item + *:before {
+        content: '•';
+        color: #FFFFFF;
+        vertical-align: middle;
+      }
+
       @media screen and (max-width: 799px) {
         #sideMenu {
           transform: translateX(-100%);
@@ -198,20 +255,35 @@
 
       <div id="curtain" on-click="_closeMenu"></div>
       <div id="sideMenu" on-transitionend="_sideMenuTransitionend">
-        <div id="logoandname">
-          <img id="logo" src="./images/board-icon-darkbg.svg">
-          <div id="productname">Vaadin Board</div>
+        <div id="menucontent">
+          <div id="logoandname">
+            <img id="logo" src="./images/board-icon-darkbg.svg">
+            <div id="productname">Vaadin Board</div>
+          </div>
+          <paper-icon-button id="closeMenu" icon="vaadin-icons:close" on-click="_closeMenu"></paper-icon-button>
+          <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+            <a name="sales-dashboard" href="#/sales-dashboard">
+              <span class="menu-item-header">Sales Dashboard</span>
+              <span class="menu-item-description">A feature rich and customizable sample template for a business overview tool. Includes real time performance indicators and history data displays.</span></a>
+            <a name="image-collage" href="#/image-collage"><span class="menu-item-header">Image Collage</span>
+            <span class="menu-item-description">Vaadin Board can be used to lay out also other things than charts. Here images are laid out to produce a beuatiful collage.</span></a>
+            <a name="row-types" href="#/row-types"><span class="menu-item-header">Row Types</span>
+            <span class="menu-item-description">A technical demo displaying available row type options. Test the container flow by zooming the viewport into different device sizes.</span></a>
+          </iron-selector>
         </div>
-        <paper-icon-button id="closeMenu" icon="vaadin-icons:close" on-click="_closeMenu"></paper-icon-button>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="sales-dashboard" href="#/sales-dashboard">
-            <span class="menu-item-header">Sales Dashboard</span>
-            <span class="menu-item-description">A feature rich and customizable sample template for a business overview tool. Includes real time performance indicators and history data displays.</span></a>
-          <a name="image-collage" href="#/image-collage"><span class="menu-item-header">Image Collage</span>
-          <span class="menu-item-description">Vaadin Board can be used to lay out also other things than charts. Here images are laid out to produce a beuatiful collage.</span></a>
-          <a name="row-types" href="#/row-types"><span class="menu-item-header">Row Types</span>
-          <span class="menu-item-description">A technical demo displaying available row type options. Test the container flow by zooming the viewport into different device sizes.</span></a>
-        </iron-selector>
+        <div id="externalresource">
+          <ul id="resourcelinks">
+            <li class="resourcelinks__item"><a href="https://vaadin.com/elements/-/element/vaadin-board">Home Page</a></li>
+            <li class="resourcelinks__item" style="display: none"><a href="#">Javadoc</a></li>
+            <li class="resourcelinks__item"><a href="https://vaadin.com/docs/-/part/board/board-overview.html">Manual</a></li>
+          </ul>
+          <div id="githubsource">
+            <a href="https://github.com/vaadin/vaadin-board-demo">
+              <iron-icon id="githublogo" icon="my-logos:github"></iron-icon>
+              <span>Source code on Github</span>
+            </a>
+          </div>
+        </div>
       </div>
 
       <header-bar id="header" demo=[[page]] on-open-menu="_openMenu"></header-bar>
