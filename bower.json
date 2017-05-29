@@ -15,7 +15,7 @@
     "paper-button": "2.0.0",
     "paper-icon-button": "2.0.0",
     "polymer": "2.0.0",
-    "vaadin-board": "vaadin/vaadin-board#^1.0.0",
+    "vaadin-board": "vaadin/vaadin-board#^1.0.1",
     "vaadin-icons": "4.0.0",
     "vaadin-split-layout": "1.1.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
