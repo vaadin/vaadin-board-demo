@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../shared-styles.html">
 <link rel="import" href="../common/demo-plus-sources-area.html">
 <link rel="import" href="../../bower_components/vaadin-board/vaadin-board.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
 <link rel="import" href="mid-column-chart.html">
 <link rel="import" href="mid-line-chart.html">
@@ -60,6 +61,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </vaadin-board>
       </demo-plus-sources-area>
     </div>
+    <iron-ajax auto url="[[resolveUrl('java-source.java')]]" last-response="{{javaSource}}" handle-as="text"></iron-ajax>
   </template>
   <script>
     class SalesDashboardDemo extends Polymer.Element {
@@ -74,6 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
         }
       }
+
     }
     window.customElements.define(SalesDashboardDemo.is, SalesDashboardDemo);
   </script>
