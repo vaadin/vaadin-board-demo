@@ -7,6 +7,7 @@
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/vaadin-icons/vaadin-icons.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
 <dom-module id="image-collage">
   <template>
@@ -107,6 +108,7 @@
           src="[[bigImage]]"></iron-image>
       </paper-dialog>
     </div>
+    <iron-ajax auto url="[[resolveUrl('java-source.java')]]" last-response="{{javaSource}}" handle-as="text"></iron-ajax>
   </template>
 
   <script>
