@@ -15,18 +15,18 @@ public class SalesDashboard extends VerticalLayout {
 
         //First row
         board.addRow(
-                createColumnChart("Total Revenue / 1 k$", BLUE,63, 51, 70, 83, 87, 37),
-                createColumnChart("Billed / 1k$", GREEN, 63, 68, 67, 65, 83, 42),
-                createColumnChart("Outstanding / 1k$", GREEN,5, 78, 7, 1, 54, 37),
-                createColumnChart("Refunded / 1k$", GREEN, 13, 9, 51, 62, 8, 8)
+            createColumnChart("Total Revenue / 1 k$", BLUE,63, 51, 70, 83, 87, 37),
+            createColumnChart("Billed / 1k$", GREEN, 63, 68, 67, 65, 83, 42),
+            createColumnChart("Outstanding / 1k$", GREEN,5, 78, 7, 1, 54, 37),
+            createColumnChart("Refunded / 1k$", GREEN, 13, 9, 51, 62, 8, 8)
         );
 
         //Second row
         Row lineChartsInnerRow = new Row();
         lineChartsInnerRow.addComponents(
-                createLineChart("Customers", "↑501", BLUE,29.9, 71.5, 106.4, 80.2, 83.0, 95.0, 92.6, 112.5, 146.4, 183.1, 201.6, 220.4),
-                createLineChart("ROI", "↑75%", BLUE,29.9, 25.5, 20.4, 24.2, 29.0, 31.0, 28.6, 27.5, 32.4, 33.1, 35.6, 35.4),
-                createLineChart("Churn", "↓32", MAGENTA,29.9, 27.5, 32.4, 28.2, 26.0, 27.0, 27.6, 25.5, 24.4, 23.1, 22.6, 21.4)
+            createLineChart("Customers", "↑501", BLUE,29.9, 71.5, 106.4, 80.2, 83.0, 95.0, 92.6, 112.5, 146.4, 183.1, 201.6, 220.4),
+            createLineChart("ROI", "↑75%", BLUE,29.9, 25.5, 20.4, 24.2, 29.0, 31.0, 28.6, 27.5, 32.4, 33.1, 35.6, 35.4),
+            createLineChart("Churn", "↓32", MAGENTA,29.9, 27.5, 32.4, 28.2, 26.0, 27.0, 27.6, 25.5, 24.4, 23.1, 22.6, 21.4)
         );
 
         Component midColumnChart = createMidColumnChart();
@@ -35,12 +35,12 @@ public class SalesDashboard extends VerticalLayout {
         Row secondLine = board.addRow(midColumnChart, lineChartsInnerRow);
         secondLine.addStyleName("mid-line-charts-row");
 
-        secondLine.setCols(midColumnChart, 3);
+        secondLine.setComponentSpan(midColumnChart, 3);
 
         //Third row
         board.addRow(
-                createFunnelChart(),
-                createPieChart()
+            createFunnelChart(),
+            createPieChart()
         );
 
         addComponent(board);
@@ -130,9 +130,9 @@ public class SalesDashboard extends VerticalLayout {
         joeSeries.setPlotOptions(joeSeriesOptions);
 
         configuration.setSeries(
-                johnSeries,
-                janeSeries,
-                joeSeries
+            johnSeries,
+            janeSeries,
+            joeSeries
         );
 
         YAxis yAxis = configuration.getyAxis();
@@ -213,12 +213,12 @@ public class SalesDashboard extends VerticalLayout {
 
         PlotOptionsFunnel plotOptionsFunnel = new PlotOptionsFunnel();
         plotOptionsFunnel.setColors(
-                new SolidColor(BLUE),
-                new SolidColor(GREEN),
-                new SolidColor(YELLOW),
-                new SolidColor(CYAN),
-                new SolidColor(MAGENTA),
-                new SolidColor(PURPLE)
+            new SolidColor(BLUE),
+            new SolidColor(GREEN),
+            new SolidColor(YELLOW),
+            new SolidColor(CYAN),
+            new SolidColor(MAGENTA),
+            new SolidColor(PURPLE)
         );
         plotOptionsFunnel.setNeckWidth("5%");
         plotOptionsFunnel.setNeckHeight("0%");
@@ -277,12 +277,12 @@ public class SalesDashboard extends VerticalLayout {
 
         PlotOptionsPie plotOptionsPie = new PlotOptionsPie();
         plotOptionsPie.setColors(
-                new SolidColor(BLUE),
-                new SolidColor(GREEN),
-                new SolidColor(YELLOW),
-                new SolidColor(CYAN),
-                new SolidColor(MAGENTA),
-                new SolidColor(PURPLE) 
+            new SolidColor(BLUE),
+            new SolidColor(GREEN),
+            new SolidColor(YELLOW),
+            new SolidColor(CYAN),
+            new SolidColor(MAGENTA),
+            new SolidColor(PURPLE)
         );
         plotOptionsPie.getDataLabels().setFormat("{point.name}: {point.y}");
         configuration.setPlotOptions(plotOptionsPie);

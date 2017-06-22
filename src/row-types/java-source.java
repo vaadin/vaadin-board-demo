@@ -18,7 +18,7 @@ public class RowTypes extends VerticalLayout {
             createBox("2", "1/4"),
             createBox("3", "1/4")
         );
-        secondRow.setCols(twoColumnsAtSecondRow, 2);
+        secondRow.setComponentSpan(twoColumnsAtSecondRow, 2);
 
         //Third row
         Component twoColumnsAtThirdRow = createBox("3", "2/4");
@@ -28,7 +28,7 @@ public class RowTypes extends VerticalLayout {
             createBox("2", "1/4"),
             twoColumnsAtThirdRow
         );
-        thirdRow.setCols(twoColumnsAtThirdRow, 2);
+        thirdRow.setComponentSpan(twoColumnsAtThirdRow, 2);
 
         //Fourth row
         Component twoColumnsAtFourthRow = createBox("2", "2/4");
@@ -38,7 +38,7 @@ public class RowTypes extends VerticalLayout {
             twoColumnsAtFourthRow,
             createBox("3", "1/4")
         );
-        fourthRow.setCols(twoColumnsAtFourthRow, 2);
+        fourthRow.setComponentSpan(twoColumnsAtFourthRow, 2);
 
         //Fifth row
         board.addRow(
@@ -53,41 +53,41 @@ public class RowTypes extends VerticalLayout {
             threeColumnsAtSixthRow,
             createBox("2", "1/4")
         );
-        sixthRow.setCols(threeColumnsAtSixthRow, 3);
+        sixthRow.setComponentSpan(threeColumnsAtSixthRow, 3);
 
         //Seventh row
         Component threeColumnsAtSeventhRow = createBox("2", "3/4");
 
         Row seventhRow = board.addRow(
-                createBox("1", "1/4"),
-                threeColumnsAtSeventhRow
+            createBox("1", "1/4"),
+            threeColumnsAtSeventhRow
         );
-        seventhRow.setCols(threeColumnsAtSeventhRow, 3);
+        seventhRow.setComponentSpan(threeColumnsAtSeventhRow, 3);
 
         //Eighth row
         board.addRow(
-                createBox("1", "1/3"),
-                createBox("2", "1/3"),
-                createBox("3", "1/3")
+            createBox("1", "1/3"),
+            createBox("2", "1/3"),
+            createBox("3", "1/3")
         );
 
         //Ninth row
         Component twoColumnsAtNinthRow = createBox("1", "2/3");
 
         Row ninthRow = board.addRow(
-                twoColumnsAtNinthRow,
-                createBox("2", "1/3")
+            twoColumnsAtNinthRow,
+            createBox("2", "1/3")
         );
-        ninthRow.setCols(twoColumnsAtNinthRow, 2);
+        ninthRow.setComponentSpan(twoColumnsAtNinthRow, 2);
 
         //Tenth row
         Component twoColumnsAtTenthRow = createBox("2", "2/3");
 
         Row tenthRow = board.addRow(
-                createBox("1", "1/3"),
-                twoColumnsAtTenthRow
+            createBox("1", "1/3"),
+            twoColumnsAtTenthRow
         );
-        tenthRow.setCols(twoColumnsAtTenthRow, 2);
+        tenthRow.setComponentSpan(twoColumnsAtTenthRow, 2);
 
         this.addComponent(board);
     }
