@@ -19,7 +19,7 @@
     "vaadin-icons": "4.0.0",
     "vaadin-split-layout": "1.1.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
-    "vaadin-charts": "2.0-preview",
+    "vaadin-charts": "5.0.0-beta1",
     "paper-dialog": "2.0.0",
     "iron-image": "2.0.0"
   },
@@ -34,7 +34,7 @@
     "webcomponentsjs": "^v1.0.0",
     "iron-resizable-behavior": "2.0.0",
     "polymer": "2.0.0",
-    "iron-meta": "2.0.0",
+    "iron-meta": "2.0.2",
     "iron-localstorage":"2.0.0"
   }
 }

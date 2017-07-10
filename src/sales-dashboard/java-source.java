@@ -10,7 +10,6 @@ public class SalesDashboard extends VerticalLayout {
 
     public SalesDashboard() {
         Board board = new Board();
-        board.setSizeFull();
         board.setStyleName("sales-dashboard-demo-area");
 
         //First row
@@ -91,7 +90,7 @@ public class SalesDashboard extends VerticalLayout {
 
         chart.drawChart();
 
-        chart.setHeight("300");
+        chart.setHeight("300px");
 
         container.addComponents(chart);
 
@@ -142,7 +141,7 @@ public class SalesDashboard extends VerticalLayout {
 
         chart.drawChart();
 
-        chart.setHeight("300");
+        chart.setHeight("500px");
 
         container.addComponents(chart);
 
@@ -152,7 +151,6 @@ public class SalesDashboard extends VerticalLayout {
     private Component createLineChart(String title, String overallValue, String color, Number... values) {
         CssLayout container = new CssLayout();
         container.setStyleName("mid-line-chart-container");
-        container.setSizeFull();
 
         Chart chart = new Chart();
         chart.setStyleName("mid-line-chart");
@@ -197,6 +195,8 @@ public class SalesDashboard extends VerticalLayout {
         container.addComponent(chart);
 
         chart.drawChart();
+
+        chart.setHeight("166.66px");
 
         return container;
     }
