@@ -56,16 +56,39 @@
 
     <!-- Add any global styles for body, document, etc. -->
     <style>
+      @font-face {
+        font-family: 'Montserrat';
+        src:
+          url('fonts/montserrat-4-regular-webfont.woff2') format('woff2'),
+          url('fonts/montserrat-4-regular-webfont.woff') format('woff');
+        font-weight: 400; /* Use for bold effect */
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Source Code Pro';
+        src:
+          url('fonts/sourcecodepro-3-regular-webfont.woff2') format('woff2'),
+          url('fonts/sourcecodepro-3-regular-webfont.woff') format('woff');
+        font-weight: 400; /* Normal */
+        font-style: normal;
+      }
 
       html {
         height: 100%;
       }
 
       body {
-        margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
-        line-height: 1.5;
         height: 100%;
+        margin: 0;
+
+        font-family: Montserrat, Helvetica, sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        letter-spacing: .03em;
+        line-height: 1.5;
       }
     </style>
   </head>
