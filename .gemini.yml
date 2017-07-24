@@ -15,12 +15,14 @@ browsers:
       browserName: "chrome"
       version: "54.0"
       platform: "Windows 10"
+      screenResolution: "1920x1080"
 
   firefox:
     desiredCapabilities:
       browserName: "firefox"
       version: "47.0"
       platform: "Windows 10"
+      screenResolution: "1920x1080"
 
 #  ie:
 #    desiredCapabilities:
