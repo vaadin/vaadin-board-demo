@@ -1,5 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/vaadin-icons/vaadin-icons.html">
 <link rel="import" href="../../bower_components/vaadin-split-layout/vaadin-split-layout.html">
 
@@ -51,7 +51,7 @@
         color: #00B2EF;
       }
 
-      .nav-panel__tabs__button[active] {
+      .nav-panel__tabs__button[vaadin-active]  {
         border-bottom: 1px solid var(--app-primary-color);
         color: #ffffff;
       }
@@ -81,9 +81,9 @@
 
       <div class="nav-panel">
         <span id="header">Source:</span>
-        <paper-button id="htmlbutton" class="nav-panel__tabs__button" on-click="showSource" noink toggles
+        <paper-button id="htmlbutton" class="nav-panel__tabs__button" on-click="showSource" noink 
           source-type="html">HTML</paper-button>
-        <paper-button id="javabutton" class="nav-panel__tabs__button" on-click="showSource" noink toggles
+        <paper-button id="javabutton" class="nav-panel__tabs__button" on-click="showSource" noink 
           source-type="java">Java</paper-button>
         <paper-button style="display:none;" id="closebutton" on-click="_close" noink
           icon="vaadin:close-circle-o">
@@ -158,14 +158,15 @@
       }
 
       _clearButtonsActive() {
-        this.$.htmlbutton.removeAttribute("active");
-        this.$.javabutton.removeAttribute("active");
+        this.$.htmlbutton.removeAttribute("vaadin-active");
+        this.$.javabutton.removeAttribute("vaadin-active");
       }
 
       showSource(e) {
         this.classList.remove("hiddensplitter");
         this.updateStyles();
         this._clearButtonsActive();
+        e.target.setAttribute('vaadin-active', '');
         this.$.closebutton.style.display = "";
         if (this.sourceLayout) {
           this.$.layout.removeChild(this.sourceLayout);
