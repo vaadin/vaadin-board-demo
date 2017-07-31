@@ -51,7 +51,7 @@
         color: #00B2EF;
       }
 
-      .nav-panel__tabs__button[vaadin-active]  {
+      .nav-panel__tabs__button[active-button]  {
         border-bottom: 1px solid var(--app-primary-color);
         color: #ffffff;
       }
@@ -158,15 +158,15 @@
       }
 
       _clearButtonsActive() {
-        this.$.htmlbutton.removeAttribute("vaadin-active");
-        this.$.javabutton.removeAttribute("vaadin-active");
+        this.$.htmlbutton.removeAttribute("active-button");
+        this.$.javabutton.removeAttribute("active-button");
       }
 
       showSource(e) {
         this.classList.remove("hiddensplitter");
         this.updateStyles();
         this._clearButtonsActive();
-        e.target.setAttribute('vaadin-active', '');
+        e.target.setAttribute('active-button', '');
         this.$.closebutton.style.display = "";
         if (this.sourceLayout) {
           this.$.layout.removeChild(this.sourceLayout);
