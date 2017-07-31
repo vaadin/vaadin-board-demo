@@ -42,9 +42,28 @@
       }
 
       #separator {
-        display:none;
         padding: 0 8px;
         color: #808F8F;
+      }
+
+      @media screen and (max-width: 499px) {
+        #names {
+          flex-direction: column;
+        }
+
+        #separator {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 500px) {
+        #names {
+          flex-direction: row;
+        }
+
+        #separator {
+          display: inline;
+        }
       }
     </style>
     <paper-icon-button id="menu" icon="vaadin:menu" on-click="openMenu"></paper-icon-button>
