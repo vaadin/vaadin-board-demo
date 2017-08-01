@@ -34,7 +34,6 @@
         display:flex;
         flex-direction: column;
         height:50px;
-        padding:8px 0;
       }
 
       #board-name {
@@ -42,9 +41,30 @@
       }
 
       #separator {
-        display:none;
         padding: 0 8px;
         color: #808F8F;
+      }
+
+      @media screen and (max-width: 799px) {
+        #names {
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        #separator {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 800px) {
+        #names {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        #separator {
+          display: inline;
+        }
       }
     </style>
     <paper-icon-button id="menu" icon="vaadin:menu" on-click="openMenu"></paper-icon-button>
