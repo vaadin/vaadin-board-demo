@@ -34,8 +34,6 @@
         display:flex;
         flex-direction: column;
         height:50px;
-        align-items: center;
-        justify-content: center;
       }
 
       #board-name {
@@ -50,6 +48,7 @@
       @media screen and (max-width: 799px) {
         #names {
           flex-direction: column;
+          justify-content: center;
         }
 
         #separator {
@@ -60,6 +59,7 @@
       @media screen and (min-width: 800px) {
         #names {
           flex-direction: row;
+          align-items: center;
         }
 
         #separator {
