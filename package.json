@@ -18,6 +18,8 @@
   },
   "scripts": {
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
-    "test": "npm run lint && polymer serve"
+    "test": "npm run lint && polymer serve",
+    "gemini-test": "gemini test test/visual",
+    "gemini-update": "gemini update test/visual"
   }
 }
