@@ -20,12 +20,16 @@
 
       #background {
         background-color: white;
-        padding:16px;
+        padding:16px 16px 0;
         width:100%;
-        height: calc(100% - 51px);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         font-family: Verdana, sans-serif;
+      }
+
+      #content-wrapper {
+        padding:0 0 51px;
+        display: block;
       }
 
       #buttons {
@@ -79,7 +83,9 @@
       <paper-icon-button noink id="mobile" icon="vaadin:mobile"></paper-icon-button>
     </div>
     <div id="background">
-      <slot id="content"></slot>
+      <div id="content-wrapper">
+        <slot id="content"></slot>
+      </div>
     </div>
   </template>
 
