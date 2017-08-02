@@ -21,6 +21,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         height: 100%;
       }
+
+      vaadin-board-row:nth-child(even) {
+        background-color: #BFBFBF;
+      }
+
+      vaadin-board-row:nth-child(odd) {
+        background: #EFEFEF;
+      }
+
+      vaadin-board-row, 
+      demo-element {
+        padding: 5px;
+      }
     </style>
     <div class="card">
       <demo-plus-sources-area header="Row types" java-source="[[javaSource]]">
