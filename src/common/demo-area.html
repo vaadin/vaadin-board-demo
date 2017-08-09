@@ -27,6 +27,11 @@
         font-family: Verdana, sans-serif;
       }
 
+      #content-wrapper {
+        padding-bottom: 51px;
+        display: block;
+      }
+
       #buttons {
         color: #808F8F;
         position: absolute;
@@ -78,7 +83,9 @@
       <paper-icon-button noink id="mobile" icon="vaadin:mobile"></paper-icon-button>
     </div>
     <div id="background">
-      <slot id="content"></slot>
+      <div id="content-wrapper">
+        <slot id="content"></slot>
+      </div>
     </div>
   </template>
 
