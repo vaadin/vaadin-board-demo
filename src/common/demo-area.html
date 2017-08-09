@@ -126,12 +126,12 @@
           } else {
             this.buttons[key].removeAttribute("active")
           }
-          this.$.background.style.width = this.modes[mode];
-          let content = this.$.content.assignedNodes().filter(node => node.nodeType !== node.TEXT_NODE)[0];
-          content.style.width = this.modes[mode];
-          if(content.redraw) {
-            content.redraw();
-          }
+        }
+        this.$.background.style.width = this.modes[mode];
+        let content = this.$.content.assignedNodes({flatten: true}).filter(node => node.nodeType !== node.TEXT_NODE)[0];
+        content.style.width = this.modes[mode];
+        if(content.redraw) {
+          content.redraw();
         }
       }
 
